@@ -20,6 +20,10 @@ class OnboardingNextButton extends StatelessWidget {
       right: TSizes.defaultSpace,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          side: BorderSide(
+            color: dark ? AppColors.primary : AppColors.white,
+            width: 2,
+          ),
           backgroundColor: dark ? AppColors.primary : AppColors.dark,
           shape: const CircleBorder(),
           padding: const EdgeInsets.all(16),

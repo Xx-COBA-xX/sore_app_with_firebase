@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/enums.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/product_details/widgets/product_detalis_body.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images_string.dart';
@@ -21,122 +24,127 @@ class TProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    return Container(
-      width: 150,
-      padding: const EdgeInsets.all(1),
-      decoration: BoxDecoration(
-        boxShadow: [TShadowStyle.productShadowStyle],
-        borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-        color: dark ? AppColors.darkGrey : AppColors.white,
-      ),
-      child: Column(
-        children: [
-          TRoundedContainer(
-            height: 150,
-            padding: const EdgeInsets.all(TSizes.sm),
-            backgroundColor: dark ? AppColors.dark : AppColors.light,
-            child: Stack(
-              children: [
-                const TRoundedImage(
-                  imageUrl: TImages.product1,
-                  fit: BoxFit.cover,
-                ),
-                Positioned(
-                  top: 0,
-                  child: TRoundedContainer(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: TSizes.sm, vertical: TSizes.xs),
-                    backgroundColor: AppColors.secondary.withOpacity(.8),
-                    reduis: TSizes.sm,
-                    child: Text(
-                      "-25%",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall!
-                          .apply(color: AppColors.black),
+    return GestureDetector(
+      onTap: () => Get.to(() => const ProdcutDetails(),
+          transition: Transition.fadeIn,
+          duration: const Duration(milliseconds: 300)),
+      child: Container(
+        width: 150,
+        padding: const EdgeInsets.all(1),
+        decoration: BoxDecoration(
+          boxShadow: [TShadowStyle.productShadowStyle],
+          borderRadius: BorderRadius.circular(TSizes.productImageRadius),
+          color: dark ? AppColors.darkGrey : AppColors.white,
+        ),
+        child: Column(
+          children: [
+            TRoundedContainer(
+              height: 150,
+              padding: const EdgeInsets.all(TSizes.sm),
+              backgroundColor: dark ? AppColors.dark : AppColors.light,
+              child: Stack(
+                children: [
+                  const TRoundedImage(
+                    imageUrl: TImages.product1,
+                    fit: BoxFit.cover,
+                  ),
+                  Positioned(
+                    top: 0,
+                    child: TRoundedContainer(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: TSizes.sm, vertical: TSizes.xs),
+                      backgroundColor: AppColors.secondary.withOpacity(.8),
+                      reduis: TSizes.sm,
+                      child: Text(
+                        "-25%",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .apply(color: AppColors.black),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  right: -16,
-                  top: -16,
-                  child: CupertinoButton(
-                    onPressed: () {},
-                    child: const TRoundedContainer(
-                      padding: EdgeInsets.all(TSizes.xs + 2),
-                      reduis: 100,
-                      child: Center(
-                        child: Icon(
-                          Iconsax.heart,
-                          size: 22,
-                          color: AppColors.error,
+                  Positioned(
+                    right: -16,
+                    top: -16,
+                    child: CupertinoButton(
+                      onPressed: () {},
+                      child: TRoundedContainer(
+                        backgroundColor:
+                            dark ? AppColors.dark : AppColors.white,
+                        padding: const EdgeInsets.all(TSizes.xs + 2),
+                        reduis: 100,
+                        child: const Center(
+                          child: Icon(
+                            Iconsax.heart,
+                            size: 22,
+                            color: AppColors.error,
+                          ),
                         ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: TSizes.spaceBtwItems / 2,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.xs),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TProducTItle(
+                    title: "White Nike Ari Shose with white ",
+                    smallTitle: true,
+                  ),
+                  SizedBox(
+                    height: TSizes.spaceBtwItems / 3,
+                  ),
+                  TBrandTitleText(
+                    title: "Nike",
+                    iconColor: AppColors.primary,
+                    maxLine: 1,
+                    textSizes: TextSizes.large,
+                  ),
+                ],
+              ),
+            ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Expanded(
+                  child: TProductPrice(
+                    price: "35.5",
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: AppColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add_copy,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
                 )
               ],
-            ),
-          ),
-          const SizedBox(
-            height: TSizes.spaceBtwItems / 2,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(left: TSizes.xs),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TProducTItle(
-                  title: "White Nike Ari Shose with white ",
-                  smallTitle: true,
-                ),
-                SizedBox(
-                  height: TSizes.spaceBtwItems / 3,
-                ),
-                TBrandTitleText(
-                  title: "Nike",
-                  iconColor: AppColors.primary,
-                  maxLine: 1,
-
-                ),
-              ],
-            ),
-          ),
-          const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Expanded(
-                child: TProductPrice(
-                  price: "35.5",
-                  
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  color: AppColors.dark,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(TSizes.cardRadiusMd),
-                    bottomRight: Radius.circular(TSizes.productImageRadius),
-                  ),
-                ),
-                child: const SizedBox(
-                  width: TSizes.iconLg * 1.2,
-                  height: TSizes.iconLg * 1.2,
-                  child: Center(
-                    child: Icon(
-                      Iconsax.add_copy,
-                      color: AppColors.white,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
 }
-
