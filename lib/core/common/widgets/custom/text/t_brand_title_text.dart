@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/enums.dart';
 
 import '../../../../utils/constants/sizes.dart';
@@ -9,7 +10,7 @@ class TBrandTitleText extends StatelessWidget {
     super.key,
     required this.title,
     this.maxLine = 1,
-    required this.iconColor,
+     this.iconColor = AppColors.primary,
     this.textSizes = TextSizes.medium,
   });
   final String title;

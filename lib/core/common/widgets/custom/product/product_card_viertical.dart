@@ -70,8 +70,9 @@ class TProductCardVertical extends StatelessWidget {
                     child: CupertinoButton(
                       onPressed: () {},
                       child: TRoundedContainer(
-                        backgroundColor:
-                            dark ? AppColors.dark : AppColors.white,
+                        backgroundColor: dark
+                            ? AppColors.black.withOpacity(0.9)
+                            : AppColors.white.withOpacity(0.9),
                         padding: const EdgeInsets.all(TSizes.xs + 2),
                         reduis: 100,
                         child: const Center(

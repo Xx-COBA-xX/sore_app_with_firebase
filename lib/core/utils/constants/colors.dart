@@ -53,6 +53,6 @@ class AppColors {
   static const Color darkGrey = Color(0xFF939393);
   static const Color grey = Color(0xFFe0e0e0);
   static const Color sfotGrey = Color(0xFFf4f4f4);
-  static const Color lightGrey = Color(0xFFf9f9f9);
+  static const Color lightGrey = Color.fromARGB(255, 194, 194, 194);
   static const Color white = Color(0xFFFFFFFF);
 }

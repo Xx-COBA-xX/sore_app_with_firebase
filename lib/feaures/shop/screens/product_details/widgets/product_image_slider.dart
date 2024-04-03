@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/images/container_image.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
@@ -21,23 +21,26 @@ class ProductImageSlider extends StatelessWidget {
       left: 0,
       bottom: 30,
       child: SizedBox(
-        height: 70,
+        height: 65,
         child: ListView.separated(
-          padding: const EdgeInsets.symmetric(
-              horizontal: TSizes.defaultSpace),
+          padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
           physics: const AlwaysScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return TRoundedContainer(
-              width: 70,
-              showBorder: true,
-              backgroundColor: isDark ? AppColors.dark : AppColors.white,
-              borderColor: AppColors.primary,
-              reduis: 12,
-              child: const TRoundedImage(
-                imageUrl: TImages.shrit,
-              )
+            return CupertinoButton(
+              onPressed: () {},
+              padding: EdgeInsets.zero,
+              child: TRoundedContainer(
+                width: 65,
+                showBorder: true,
+                backgroundColor: isDark ? AppColors.dark : AppColors.white,
+                borderColor: AppColors.primary,
+                reduis: 12,
+                child: const TRoundedImage(
+                  imageUrl: TImages.shrit,
+                ),
+              ),
             );
           },
           separatorBuilder: (_, __) => const SizedBox(
