@@ -41,12 +41,14 @@ class ProductImageView extends StatelessWidget {
             //! product image slider
             ProductImageSlider(isDark: isDark),
             TAppBar(
+              showBackArrow: true,
               actions: [
                 TCircelarIcon(
                   isDark: isDark,
                   iconColor: Colors.red,
                   onPressed: () {},
                   icon: Iconsax.heart,
+                  
                 )
               ],
             )

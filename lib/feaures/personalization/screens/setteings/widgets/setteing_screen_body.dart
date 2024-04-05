@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'package:sore_app_with_firebase/core/common/widgets/custom/contianer_widget/primery_headlng_container.dart';
@@ -8,6 +9,7 @@ import 'package:sore_app_with_firebase/core/common/widgets/custom/section_headin
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/personalization/screens/addrass/user_addrass_screen.dart';
 
 import '../../../../../core/common/widgets/custom/list_tile/t_settins_menu_title.dart';
 import 't_user_avatar_and_his_info.dart';
@@ -47,10 +49,12 @@ class SetteingScreenBody extends StatelessWidget {
                     title: "Account Settings",
                     showMore: false,
                     textColor: isDark ? AppColors.white : AppColors.dark),
-                const TSetteingMenuTile(
-                    title: "My Addresse",
-                    subTitle: "Set shopping delivery address",
-                    icon: Iconsax.safe_home_copy),
+                TSetteingMenuTile(
+                  title: "My Addresse",
+                  subTitle: "Set shopping delivery address",
+                  icon: Iconsax.safe_home_copy,
+                  onTap: () => Get.to(() =>const UserAddrassScreen()),
+                ),
                 const TSetteingMenuTile(
                     title: "My Cart",
                     subTitle: "Add, remove products and move to checkout",
