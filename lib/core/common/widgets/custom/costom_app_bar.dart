@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
+import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 
 import '../../../utils/constants/sizes.dart';
 import 'custom_icon_button.dart';
@@ -27,12 +29,18 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: title,
         leading: showBackArrow
             ? CustomIconButton(
-                icon: Iconsax.shopping_bag_copy,
+                icon: Iconsax.arrow_left_2_copy,
+                color: THelperFunctions.isDarkMode(context)
+                    ? AppColors.white
+                    : AppColors.dark,
                 onPressed: () => Get.back(),
               )
             : leadingIcon != null
                 ? CustomIconButton(
                     icon: leadingIcon!,
+                    color: THelperFunctions.isDarkMode(context)
+                        ? AppColors.white
+                        : AppColors.dark,
                     onPressed: onLeadingIconPressed,
                   )
                 : null,

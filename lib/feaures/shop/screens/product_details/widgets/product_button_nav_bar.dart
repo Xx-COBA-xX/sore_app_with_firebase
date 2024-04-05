@@ -65,7 +65,7 @@ class ProductButtomNavBar extends StatelessWidget {
                 onPressed: () {},
                 child:  Text(
                   "Add To Cart",
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: Theme.of(context).textTheme.titleMedium!.apply(color: AppColors.white),
                 ),
               ),
             )

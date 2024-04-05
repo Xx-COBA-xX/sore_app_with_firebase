@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/custom_icon_button.dart';
@@ -7,6 +8,7 @@ import 'package:sore_app_with_firebase/core/common/widgets/custom/section_headin
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/product_reviews/prodcut_reviewes_screen.dart';
 
 import '../../../../../core/utils/helpers/helper_func.dart';
 import 'product_atributes.dart';
@@ -64,9 +66,12 @@ class ProductDetailsScreenBody extends StatelessWidget {
                   trimCollapsedText: 'Show more',
                   trimExpandedText: 'less',
                   moreStyle: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.w800),
+                      color: AppColors.primary, fontWeight: FontWeight.w800),
                   lessStyle: TextStyle(
-                      color: Colors.blue, fontWeight: FontWeight.w800),
+                      color: AppColors.primary, fontWeight: FontWeight.w800),
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
                 ),
                 const Divider(),
                 const SizedBox(
@@ -84,12 +89,14 @@ class ProductDetailsScreenBody extends StatelessWidget {
                     CustomIconButton(
                       icon: Iconsax.arrow_right_3_copy,
                       size: 20,
-                      onPressed: () {},
+                      onPressed: () =>
+                          Get.to(() => const ProductReviewesScreen()),
+                      color: isDark ? AppColors.white : AppColors.dark,
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: TSizes.spaceBtwItems,
+                  height: TSizes.spaceBtwSections,
                 ),
               ],
             ),

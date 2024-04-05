@@ -7,6 +7,7 @@ import 'package:sore_app_with_firebase/core/common/widgets/custom/costom_app_bar
 import 'package:sore_app_with_firebase/core/common/widgets/custom/section_heading.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 
 import '../../../../../core/common/widgets/custom/list_tile/t_settins_menu_title.dart';
 import 't_user_avatar_and_his_info.dart';
@@ -16,6 +17,7 @@ class SetteingScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = THelperFunctions.isDarkMode(context);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -41,8 +43,10 @@ class SetteingScreenBody extends StatelessWidget {
             padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: Column(
               children: [
-                const TSectionHeading(
-                    title: "Account Settings", showMore: false),
+                TSectionHeading(
+                    title: "Account Settings",
+                    showMore: false,
+                    textColor: isDark ? AppColors.white : AppColors.dark),
                 const TSetteingMenuTile(
                     title: "My Addresse",
                     subTitle: "Set shopping delivery address",
@@ -72,7 +76,11 @@ class SetteingScreenBody extends StatelessWidget {
                     subTitle: "Manage data usage and cnnected accounts",
                     icon: Iconsax.security_card_copy),
                 const SizedBox(height: TSizes.spaceBtwSections),
-                const TSectionHeading(title: "App Settings", showMore: false),
+                TSectionHeading(
+                  title: "App Settings",
+                  showMore: false,
+                  textColor: isDark ? AppColors.white : AppColors.dark,
+                ),
                 const SizedBox(height: TSizes.spaceBtwSections),
                 const TSetteingMenuTile(
                     title: "Load Data",
