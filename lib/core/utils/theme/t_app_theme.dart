@@ -27,6 +27,7 @@ class TAppThemeData {
     chipTheme: TChipTheme.lightChipTheme,
     outlinedButtonTheme: TOutlineBottonTheme.lightOutlineBottonTheme,
     inputDecorationTheme: TTextFormFieldTheme.lightTextFormFieldTheme,
+    
   );
 
   static ThemeData darkTheme = ThemeData(

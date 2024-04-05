@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-class TProducTItle extends StatelessWidget {
-  const TProducTItle({
+class TProducTitle extends StatelessWidget {
+  const TProducTitle({
     super.key,
     required this.title,
     this.smallTitle = false,

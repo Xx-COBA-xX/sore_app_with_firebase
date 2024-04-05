@@ -20,12 +20,13 @@ class ProductMetaData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const ProductPrice(),
         const SizedBox(
           height: TSizes.spaceBtwItems / 1.5,
         ),
-        const TProducTItle(
+        const TProducTitle(
           title: "Nike T-Shirt with player image",
         ),
         const SizedBox(
@@ -33,7 +34,7 @@ class ProductMetaData extends StatelessWidget {
         ),
         Row(
           children: [
-            const TProducTItle(
+            const TProducTitle(
               title: "Status :",
             ),
             const SizedBox(
@@ -62,6 +63,9 @@ class ProductMetaData extends StatelessWidget {
               textSizes: TextSizes.medium,
             )
           ],
+        ),
+        const SizedBox(
+          height: TSizes.spaceBtwItems / 1.5,
         ),
       ],
     );

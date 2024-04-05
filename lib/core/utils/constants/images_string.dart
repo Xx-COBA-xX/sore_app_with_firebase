@@ -35,7 +35,7 @@ class TImages {
   static const ad3 = "assets/images/ads/ad3.png";
 
   static const product1 = "assets/images/products/product1.png";
-  static const shrit = "assets/images/products/t-shrit.png";
+  static const shrit = "assets/images/products/t-shirt.png";
 
   static const avatar = "assets/images/users/usrs.jpg";
 }

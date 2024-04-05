@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/enums.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
-import 'package:sore_app_with_firebase/feaures/shop/screens/product_details/widgets/product_detalis_body.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/product_details/product_details.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/images_string.dart';
@@ -97,7 +97,7 @@ class TProductCardVertical extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TProducTItle(
+                  TProducTitle(
                     title: "White Nike Ari Shose with white ",
                     smallTitle: true,
                   ),

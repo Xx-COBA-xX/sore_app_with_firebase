@@ -4,6 +4,47 @@ import 'package:intl/intl.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 
 class THelperFunctions {
+  static Color? getColor(String color) {
+    switch (color) {
+      case "Green":
+        return Colors.green;
+      case "Red":
+        return Colors.red;
+      case "Orange":
+        return Colors.orange;
+      case "Blue":
+        return Colors.blue;
+      case "Yellow":
+        return Colors.yellow;
+      case "Pink":
+        return Colors.pink;
+      case "Purple":
+        return Colors.purple;
+      case "Black":
+        return Colors.black;
+      case "White":
+        return Colors.white;
+      case "Grey":
+        return Colors.grey;
+      case "Brown":
+        return Colors.brown;
+      case "Cyan":
+        return Colors.cyan;
+      case "Teal":
+        return Colors.teal;
+      case "Amber":
+        return Colors.amber;
+      case "Lime":
+        return Colors.lime;
+      case "Indigo":
+        return Colors.indigo;
+      case "LightBlue":
+        return Colors.lightBlue;
+      default:
+        return null;
+    }
+  }
+
   static void showSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

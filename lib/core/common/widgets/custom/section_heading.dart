@@ -29,6 +29,7 @@ class TSectionHeading extends StatelessWidget {
     return Padding(
       padding: padding!,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
@@ -37,14 +38,15 @@ class TSectionHeading extends StatelessWidget {
                 .headlineSmall!
                 .apply(color: textColor),
           ),
-          const Spacer(),
+          
           if (showMore)
             CupertinoButton(
-                onPressed: onPressed,
-                child: Text(
-                  btnText,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ))
+              onPressed: onPressed,
+              child: Text(
+                btnText,
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            )
         ],
       ),
     );
