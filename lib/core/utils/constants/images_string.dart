@@ -37,5 +37,6 @@ class TImages {
   static const product1 = "assets/images/products/product1.png";
   static const shrit = "assets/images/products/t-shirt.png";
 
+  static const paypal = "assets/images/payment_method_type/paypal.png";
   static const avatar = "assets/images/users/usrs.jpg";
 }

@@ -11,7 +11,7 @@ class TCircelarIcon extends StatelessWidget {
     this.width = 40,
     this.backgroundColor,
     this.redius = 100,
-    this.icon,
+    required this.icon,
     this.iconColor,
     this.iconSize = TSizes.iconMd ,
     this.onPressed,
@@ -22,7 +22,7 @@ class TCircelarIcon extends StatelessWidget {
   final double? width;
   final Color? backgroundColor;
   final double? redius;
-  final IconData? icon;
+  final IconData icon;
   final Color? iconColor;
   final double? iconSize;
   final void Function()? onPressed;
@@ -39,8 +39,8 @@ class TCircelarIcon extends StatelessWidget {
           borderRadius: BorderRadius.circular(redius!),
           color: backgroundColor ??
               (isDark
-                  ? AppColors.black.withOpacity(0.9)
-                  : AppColors.white.withOpacity(.9)),
+                  ? AppColors.white.withOpacity(0.9)
+                  : AppColors.black.withOpacity(.9)),
         ),
         child: Center(
           child: Icon(

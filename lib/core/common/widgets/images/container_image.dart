@@ -8,7 +8,10 @@ class TRoundedImage extends StatelessWidget {
     required this.imageUrl,
     this.borderRadius = TSizes.md,
     this.isNetworkImage = false,
-    this.fit = BoxFit.contain, this.width, this.height,
+    this.fit = BoxFit.contain,
+    this.width,
+    this.height,
+    this.color, this.padding,
   });
 
   final String imageUrl;
@@ -17,14 +20,17 @@ class TRoundedImage extends StatelessWidget {
   final BoxFit? fit;
   final double? width;
   final double? height;
+  final Color? color;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       height: height,
-      // padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+      padding: padding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
+        color: color,
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),

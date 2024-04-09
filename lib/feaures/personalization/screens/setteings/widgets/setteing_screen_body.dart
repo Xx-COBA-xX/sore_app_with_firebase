@@ -49,11 +49,12 @@ class SetteingScreenBody extends StatelessWidget {
                     title: "Account Settings",
                     showMore: false,
                     textColor: isDark ? AppColors.white : AppColors.dark),
+                const SizedBox(height: TSizes.spaceBtwSections),
                 TSetteingMenuTile(
                   title: "My Addresse",
                   subTitle: "Set shopping delivery address",
                   icon: Iconsax.safe_home_copy,
-                  onTap: () => Get.to(() =>const UserAddrassScreen()),
+                  onTap: () => Get.to(() => const UserAddrassScreen()),
                 ),
                 const TSetteingMenuTile(
                     title: "My Cart",

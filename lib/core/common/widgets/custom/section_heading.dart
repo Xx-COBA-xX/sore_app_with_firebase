@@ -41,10 +41,11 @@ class TSectionHeading extends StatelessWidget {
           
           if (showMore)
             CupertinoButton(
+              padding: EdgeInsets.zero,
               onPressed: onPressed,
               child: Text(
                 btnText,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
             )
         ],

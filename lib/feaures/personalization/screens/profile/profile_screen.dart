@@ -10,6 +10,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TAppBar(
+        showBackArrow: true,
         title: Text(
           "Profile",
           style: Theme.of(context).textTheme.headlineMedium

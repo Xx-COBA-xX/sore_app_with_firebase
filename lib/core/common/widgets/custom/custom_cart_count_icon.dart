@@ -8,9 +8,10 @@ import 'custom_icon_button.dart';
 class TCartCountIcon extends StatelessWidget {
   const TCartCountIcon({
     super.key,
-    this.color,
+    this.color, this.onPressed,
   });
   final Color? color;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -19,7 +20,7 @@ class TCartCountIcon extends StatelessWidget {
           icon: Iconsax.shopping_bag_copy,
           size: 26,
           color: color,
-          onPressed: () {},
+          onPressed: onPressed,
         ),
         Positioned(
           right: 0,

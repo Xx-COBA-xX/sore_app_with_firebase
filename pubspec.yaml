@@ -80,6 +80,7 @@ flutter:
     - assets/images/ads/
     - assets/images/products/
     - assets/images/users/
+    - assets/images/payment_method_type/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
