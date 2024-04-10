@@ -1,14 +1,23 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
+
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
-import 'package:sore_app_with_firebase/feaures/authentication/screens/login/login_screen.dart';
 
 import '../../../../core/utils/helpers/helper_func.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({super.key});
+  const SuccessScreen({
+    super.key,
+    required this.title,
+    required this.subTitle,
+    this.onPressed,
+  });
 
+  final String title;
+  final String subTitle;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +26,6 @@ class SuccessScreen extends StatelessWidget {
             horizontal: TSizes.defaultSpace, vertical: TSizes.defaultSpace),
         child: SingleChildScrollView(
           child: Column(
-            
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
@@ -31,7 +39,7 @@ class SuccessScreen extends StatelessWidget {
                 height: TSizes.spaceBtwSections,
               ),
               Text(
-                "Your Account Successfully Created!",
+                title,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
@@ -39,7 +47,7 @@ class SuccessScreen extends StatelessWidget {
                 height: TSizes.spaceBtwItems,
               ),
               Text(
-                "Welcome to Your Uitimate Shopping Destination. You can now enjoy shopping with us and get the best deals and offers.",
+                subTitle,
                 style: Theme.of(context).textTheme.labelMedium,
                 textAlign: TextAlign.center,
               ),
@@ -49,12 +57,18 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(
-                    const LoginScreen(),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primary,
                   ),
-                  child: const Text("Contiune"),
+                  onPressed: onPressed,
+                  child: Text(
+                    "Contiune",
+                    style: Theme.of(context).textTheme.bodyLarge!.apply(
+                          color: AppColors.white,
+                        ),
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

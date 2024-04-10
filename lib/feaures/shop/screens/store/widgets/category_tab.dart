@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/sub_categorie/sub_categorie_screen.dart';
 
 import '../../../../../core/common/widgets/custom/brand/t_product_brand_card.dart';
 import '../../../../../core/common/widgets/custom/layout/t_grid_layout.dart';
@@ -8,8 +9,6 @@ import '../../../../../core/common/widgets/custom/section_heading.dart';
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/images_string.dart';
 import '../../../../../core/utils/constants/sizes.dart';
-
-
 
 class TCategoryTab extends StatelessWidget {
   const TCategoryTab({
@@ -59,7 +58,11 @@ class TCategoryTab extends StatelessWidget {
           textColor: isDark ? AppColors.white : AppColors.black,
           title: "Maghy Like",
           showMore: true,
-          onPressed: () {},
+          onPressed: () => Get.to(
+            () => const SubCategorieScreen(),
+            transition: Transition.fadeIn,
+            duration: const Duration(milliseconds: 300),
+          ),
           padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
         ),
         const SizedBox(

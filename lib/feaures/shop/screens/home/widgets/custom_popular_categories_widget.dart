@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/sub_categorie/sub_categorie_screen.dart';
 
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/images_string.dart';
@@ -25,7 +27,9 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
             children: [
               CupertinoButton(
                 padding: EdgeInsets.zero,
-                onPressed: () {},
+                onPressed: () => Get.to(() => const SubCategorieScreen(),
+                    transition: Transition.fadeIn,
+                    duration: const Duration(milliseconds: 300)),
                 child: Container(
                   height: 56,
                   width: 56,
@@ -49,10 +53,9 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
                 width: 50,
                 child: Text(
                   "Shose Category",
-                  style:
-                      Theme.of(context).textTheme.bodyLarge!.apply(
-                            color: AppColors.white,
-                          ),
+                  style: Theme.of(context).textTheme.bodyLarge!.apply(
+                        color: AppColors.white,
+                      ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

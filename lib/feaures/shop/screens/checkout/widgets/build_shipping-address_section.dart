@@ -2,14 +2,12 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'package:sore_app_with_firebase/core/common/widgets/custom/section_heading.dart';
-import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 
-import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import 'build_addrass_section_tiem.dart';
 
 class TBuildingShippingAddressSection extends StatelessWidget {
   const TBuildingShippingAddressSection({super.key});
@@ -47,34 +45,6 @@ class TBuildingShippingAddressSection extends StatelessWidget {
           icon: Iconsax.location_copy,
           text: "Abo Al-Khasib,Basrah 11223, IRAQ ",
         ),
-      ],
-    );
-  }
-}
-
-class TBuildAddrassItem extends StatelessWidget {
-  const TBuildAddrassItem({
-    super.key,
-    required this.icon,
-    required this.text,
-  });
-  final IconData icon;
-  final String text;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          icon,
-          size: 20,
-        ),
-        const SizedBox(
-          width: TSizes.spaceBtwItems / 2,
-        ),
-        Text(
-          text,
-          style: Theme.of(context).textTheme.bodyMedium,
-        )
       ],
     );
   }

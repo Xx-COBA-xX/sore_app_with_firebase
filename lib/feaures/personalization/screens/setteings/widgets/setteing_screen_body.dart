@@ -10,6 +10,7 @@ import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 import 'package:sore_app_with_firebase/feaures/personalization/screens/addrass/user_addrass_screen.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/order/order_screen.dart';
 
 import '../../../../../core/common/widgets/custom/list_tile/t_settins_menu_title.dart';
 import 't_user_avatar_and_his_info.dart';
@@ -54,13 +55,18 @@ class SetteingScreenBody extends StatelessWidget {
                   title: "My Addresse",
                   subTitle: "Set shopping delivery address",
                   icon: Iconsax.safe_home_copy,
-                  onTap: () => Get.to(() => const UserAddrassScreen()),
+                  onTap: () => Get.to(() => const UserAddrassScreen(),
+                      transition: Transition.fadeIn,
+                      duration: const Duration(milliseconds: 300)),
                 ),
                 const TSetteingMenuTile(
                     title: "My Cart",
                     subTitle: "Add, remove products and move to checkout",
                     icon: Iconsax.shopping_cart_copy),
-                const TSetteingMenuTile(
+                TSetteingMenuTile(
+                    onTap: () => Get.to(() => const OrderScreen(),
+                        transition: Transition.fadeIn,
+                        duration: const Duration(milliseconds: 300)),
                     title: "My Orders",
                     subTitle: "Track, return, or buy again",
                     icon: Iconsax.bag_tick_copy),

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class TProducTitle extends StatelessWidget {
   const TProducTitle({
-    Key? key,
+    super.key,
     required this.title,
     this.smallTitle = false,
     this.textAlign = TextAlign.left, // Add this.,
      this.maxLine = 2,
-  }) : super(key: key);
+  });
   final String title;
   final bool smallTitle;
   final TextAlign? textAlign;

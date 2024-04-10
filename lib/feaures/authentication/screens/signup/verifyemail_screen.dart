@@ -29,7 +29,8 @@ class VerifyEmailScreen extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace , vertical: TSizes.defaultSpace),
+        padding: const EdgeInsets.symmetric(
+            horizontal: TSizes.defaultSpace, vertical: TSizes.defaultSpace),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -68,7 +69,14 @@ class VerifyEmailScreen extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Get.to(
-                    const SuccessScreen(),
+                    SuccessScreen(
+                      onPressed: () => Get.to(
+                        const LoginScreen(),
+                      ),
+                      title: "Your Account Successfully Created!",
+                      subTitle:
+                          "Welcome to Your Uitimate Shopping Destination. You can now enjoy shopping with us and get the best deals and offers.",
+                    ),
                   ),
                   child: const Text("Contiune"),
                 ),
