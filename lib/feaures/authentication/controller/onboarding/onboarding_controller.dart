@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/valribals.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/login/login_screen.dart';
 
 class OnBoardingController extends GetxController {
@@ -7,7 +10,6 @@ class OnBoardingController extends GetxController {
 
   final pageController = PageController();
   final Rx<int> currentPage = 0.obs;
-
   void updatePageIndecator(int index) => currentPage.value = index;
 
   void dotIndecatroCleck(int index) {
@@ -19,8 +21,22 @@ class OnBoardingController extends GetxController {
     );
   }
 
-  void nextPage() {
+  void nextPage() async{
     if (currentPage.value == 2) {
+      
+  final SharedPreferences storage = await
+      SharedPreferences.getInstance();
+      if (kDebugMode) {
+        print(
+            "=================== GET STORAGE next button ======================");
+        print(storage.getBool(IS_FIRST_TIME));
+      }
+      storage.setBool(IS_FIRST_TIME, false);
+      if (kDebugMode) {
+        print(
+            "=================== GET STORAGE next button ======================");
+        print(storage.getBool(IS_FIRST_TIME));
+      }
       Get.offAll(const LoginScreen());
     } else {
       currentPage.value = currentPage.value + 1;

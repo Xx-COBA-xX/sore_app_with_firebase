@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sore_app_with_firebase/feaures/authentication/controller/signup%20controller/signup_controller.dart';
 
 import '../../../../../core/utils/constants/colors.dart';
 
@@ -12,14 +14,20 @@ class SignupAgreeCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = SignUpController.instance;
     return Row(
       children: [
         SizedBox(
           height: 26,
           width: 26,
-          child: Checkbox(
-            value: true,
-            onChanged: (value) {},
+          child: Obx(
+            () => Checkbox(
+              value: controller.privacyPolicy.value,
+              onChanged: (value) {
+                controller.privacyPolicy.value =
+                    !controller.privacyPolicy.value;
+              },
+            ),
           ),
         ),
         Text.rich(
@@ -58,4 +66,3 @@ class SignupAgreeCheckBox extends StatelessWidget {
     );
   }
 }
-

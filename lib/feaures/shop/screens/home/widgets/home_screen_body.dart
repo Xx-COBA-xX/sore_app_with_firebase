@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
 
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/popular_product/popular_product.dart';
 
 import '../../../../../core/common/widgets/custom/contianer_widget/custom_search_bar.dart';
 import '../../../../../core/common/widgets/custom/contianer_widget/primery_headlng_container.dart';
@@ -46,7 +48,9 @@ class HomeScreenBody extends StatelessWidget {
                   height: TSizes.spaceBtwItems,
                 ),
                 CustomPopularCategoriesWidget(),
-                SizedBox(height: TSizes.spaceBtwSections,)
+                SizedBox(
+                  height: TSizes.spaceBtwSections,
+                )
               ],
             ),
           ),
@@ -64,7 +68,9 @@ class HomeScreenBody extends StatelessWidget {
             btnText: "View All",
             title: 'Popular Products',
             showMore: true,
-            onPressed: () {},
+            onPressed: () => Get.to(() => const PopularProductScreen(),
+                transition: Transition.fadeIn,
+                duration: const Duration(milliseconds: 300)),
           ),
           TGridLayout(
             itemBuilder: (context, index) => const TProductCardVertical(),

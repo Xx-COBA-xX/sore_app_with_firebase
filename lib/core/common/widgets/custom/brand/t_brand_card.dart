@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/colors.dart';
@@ -18,6 +21,7 @@ class TBrandCard extends StatelessWidget {
     required this.image,
     this.isNetworkImage = false,
     this.textSizes = TextSizes.large,
+    this.onPressed,
   });
   final String title;
   final String? productNum;
@@ -26,43 +30,48 @@ class TBrandCard extends StatelessWidget {
   final String image;
   final bool? isNetworkImage;
   final TextSizes? textSizes;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     final isDark = THelperFunctions.isDarkMode(context);
-    return TRoundedContainer(
-      backgroundColor: backgroundColor!,
-      padding: const EdgeInsets.all(TSizes.sm),
-      showBorder: showBorder!,
-      child: Row(
-        children: [
-          Flexible(
-            child: TCircalrImage(
-              isDark: isDark,
-              image: image,
-              bacgroundColor: Colors.transparent,
-              isNetworkImage: isNetworkImage,
-              imageColor: isDark ? AppColors.white : AppColors.black,
+    return CupertinoButton(
+      onPressed: onPressed,
+      padding: EdgeInsets.zero,
+      child: TRoundedContainer(
+        backgroundColor: backgroundColor!,
+        padding: const EdgeInsets.all(TSizes.sm),
+        showBorder: showBorder!,
+        child: Row(
+          children: [
+            Flexible(
+              child: TCircalrImage(
+                isDark: isDark,
+                image: image,
+                bacgroundColor: Colors.transparent,
+                isNetworkImage: isNetworkImage,
+                imageColor: isDark ? AppColors.white : AppColors.black,
+              ),
             ),
-          ),
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TBrandTitleText(
-                  title: title,
-                  iconColor: AppColors.primary,
-                  textSizes: textSizes,
-                ),
-                Text(
-                  productNum!,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.labelMedium,
-                )
-              ],
-            ),
-          )
-        ],
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TBrandTitleText(
+                    title: title,
+                    iconColor: AppColors.primary,
+                    textSizes: textSizes,
+                  ),
+                  Text(
+                    productNum!,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
