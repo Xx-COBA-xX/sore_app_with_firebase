@@ -37,4 +37,11 @@ class TValidator {
     }
     return null;
   }
+
+  static String? textValidator(String? value , String fieldName) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required';
+    }
+    return null;
+  }
 }

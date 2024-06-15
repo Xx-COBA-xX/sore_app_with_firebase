@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:sore_app_with_firebase/core/common/widgets/custom/contianer_widget/custom_search_bar.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
@@ -8,6 +9,7 @@ import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/brand/brands_screen.dart';
 
 import '../../../../../core/common/widgets/custom/brand/t_brand_card.dart';
 import '../../../../../core/common/widgets/custom/tab/t_tab_widget.dart';
@@ -52,7 +54,11 @@ class StoreScreenBody extends StatelessWidget {
                       textColor: isDark ? AppColors.white : AppColors.black,
                       title: "Featured Brands",
                       showMore: true,
-                      onPressed: () {},
+                      onPressed: () => Get.to(
+                        () => const AllBrandsScreen(),
+                        transition: Transition.fadeIn,
+                        duration: const Duration(milliseconds: 300),
+                      ),
                       padding: EdgeInsets.zero,
                     ),
                     const SizedBox(
@@ -69,7 +75,7 @@ class StoreScreenBody extends StatelessWidget {
                           title: "Nike",
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

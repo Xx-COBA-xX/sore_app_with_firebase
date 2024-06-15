@@ -39,4 +39,6 @@ class TImages {
 
   static const paypal = "assets/images/payment_method_type/paypal.png";
   static const avatar = "assets/images/users/usrs.jpg";
+
+  static const loaderAnimation = "assets/images/animations/loader.json";
 }
