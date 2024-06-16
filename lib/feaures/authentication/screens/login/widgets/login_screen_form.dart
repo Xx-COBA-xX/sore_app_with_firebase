@@ -38,24 +38,23 @@ class TLoginForm extends StatelessWidget {
             ),
             //? password field
             Obx(
-              ()=> TextFormField(
+              () => TextFormField(
                 validator: TValidator.validatePassword,
                 controller: controller.password,
                 obscureText: controller.showPassword.value,
                 decoration: InputDecoration(
                   hintText: "Password",
                   prefixIcon: const Icon(Iconsax.password_check_copy),
-                  suffixIcon:CustomIconButton(
-                      icon: controller.showPassword.value
-                          ? Iconsax.eye_slash_copy
-                          : Iconsax.eye_copy,
-                      onPressed: () {
-                        controller.showPassword.value =
-                            !controller.showPassword.value;
-                      },
-                    ),
+                  suffixIcon: CustomIconButton(
+                    icon: controller.showPassword.value
+                        ? Iconsax.eye_slash_copy
+                        : Iconsax.eye_copy,
+                    onPressed: () {
+                      controller.showPassword.value =
+                          !controller.showPassword.value;
+                    },
                   ),
-                
+                ),
               ),
             ),
             const SizedBox(
@@ -85,12 +84,14 @@ class TLoginForm extends StatelessWidget {
                 ),
                 //? forgot password
                 TextButton(
-                  child: const Text(
-                    "Forgot Password?",
-                  ),
-                  // onPressed: () => Get.to(const ForgetPasswordScreen()),
-                  onPressed: () => Get.to(()=>TFullScreenLoader.opneLoadeingDialog("hhaerhd", TImages.loaderAnimation),)
-                ),
+                    child: const Text(
+                      "Forgot Password?",
+                    ),
+                    // onPressed: () => Get.to(const ForgetPasswordScreen()),
+                    onPressed: () => Get.to(
+                          () => TFullScreenLoader.opneLoadeingDialog(
+                              "hhaerhd", TImages.loaderAnimation),
+                        )),
               ],
             ),
             const SizedBox(
@@ -100,7 +101,7 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () => controller.login(),
+                onPressed: () => controller.signInEamilWithPassword(),
                 child: const Text(
                   "Login",
                 ),
@@ -111,7 +112,7 @@ class TLoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                onPressed: () => Get.to(()=> const SignupScreen()),
+                onPressed: () => Get.to(() => const SignupScreen()),
                 child: const Text(
                   "Create an Account",
                 ),

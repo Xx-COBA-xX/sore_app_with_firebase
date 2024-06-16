@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/loaders/t_loaders.dart';
@@ -6,8 +8,6 @@ import 'package:sore_app_with_firebase/core/utils/network/network_manager.dart';
 import 'package:sore_app_with_firebase/core/utils/popups/full_screen_loadder.dart';
 import 'package:sore_app_with_firebase/data/repository/authentication/auth_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/signup/verifyemail_screen.dart';
-
-
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
@@ -79,12 +79,13 @@ class SignUpController extends GetxController {
       // Navigator.of(Get.overlayContext!).push(MaterialPageRoute(
       //   builder: (context) => const VerifyEmailScreen(),
       // ));
-      Get.to(() => const VerifyEmailScreen());
+      Get.to(() => VerifyEmailScreen(
+            email: email.text.trim(),
+          ));
     } catch (e) {
       TFullScreenLoader.stopLoading();
 
       TLoaders.errorSnackBar(title: "Oh Snap", message: e.toString());
-    } 
-    
+    }
   }
 }

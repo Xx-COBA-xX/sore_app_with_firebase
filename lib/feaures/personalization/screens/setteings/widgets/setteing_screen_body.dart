@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -9,6 +10,8 @@ import 'package:sore_app_with_firebase/core/common/widgets/custom/section_headin
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/data/repository/authentication/auth_repositry.dart';
+import 'package:sore_app_with_firebase/feaures/personalization/controller/setteugs/setteings_controller.dart';
 import 'package:sore_app_with_firebase/feaures/personalization/screens/addrass/user_addrass_screen.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/order/order_screen.dart';
 
@@ -108,10 +111,36 @@ class SetteingScreenBody extends StatelessWidget {
                     icon: Iconsax.security_user_copy,
                     trailing: Switch(value: false, onChanged: (value) {})),
                 TSetteingMenuTile(
-                    title: "HD Image Quality",
-                    subTitle: "Set image quality to be seem",
-                    icon: Iconsax.image_copy,
-                    trailing: Switch(value: true, onChanged: (value) {})),
+                  title: "HD Image Quality",
+                  subTitle: "Set image quality to be seem",
+                  icon: Iconsax.image_copy,
+                  trailing: Switch(
+                    value: true,
+                    onChanged: (value) {},
+                  ),
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          isDark ? AppColors.dark : AppColors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Text("Sign Out"),
+                    onPressed: () async {
+                      final SetteingsController controller =
+                          Get.put(SetteingsController());
+
+                      await controller.signOut();
+                    },
+                  ),
+                )
               ],
             ),
           )
