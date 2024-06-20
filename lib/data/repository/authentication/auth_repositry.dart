@@ -1,5 +1,3 @@
-
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
@@ -130,6 +128,24 @@ class AuthenticationRepository extends GetxController {
         idToken: googleAuth.idToken,
       );
       return _auth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(
+        e.message,
+      );
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  ///[Reset Email Password]///
+
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(code: e.code).errorMessage;
     } on FirebaseException catch (e) {

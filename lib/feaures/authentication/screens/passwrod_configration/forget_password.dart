@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
-import 'package:sore_app_with_firebase/feaures/authentication/screens/passwrod_configration/reset_password.dart';
+import 'package:sore_app_with_firebase/feaures/authentication/controller/forget_password/forget_password_controller.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -26,24 +27,26 @@ class ForgetPasswordScreen extends StatelessWidget {
               ),
               const SizedBox(height: TSizes.spaceBtwSections * 1.5),
               Form(
+                  key: controller.forgetFormKey,
                   child: Column(
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Iconsax.direct_right_copy),
-                      hintText: "E-Mail",
-                    ),
-                  ),
-                  const SizedBox(height: TSizes.spaceBtwSections),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () =>Get.to(const ResetPasswordScreen()),
-                      child: const Text("Submit"),
-                    ),
-                  ),
-                ],
-              )),
+                    children: [
+                      TextFormField(
+                        controller: controller.email,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(Iconsax.direct_right_copy),
+                          hintText: "E-Mail",
+                        ),
+                      ),
+                      const SizedBox(height: TSizes.spaceBtwSections),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () => controller.sendPasswordResetEmail(),
+                          child: const Text("Submit"),
+                        ),
+                      ),
+                    ],
+                  )),
             ],
           ),
         ),
