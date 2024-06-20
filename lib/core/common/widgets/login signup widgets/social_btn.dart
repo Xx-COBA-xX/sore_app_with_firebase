@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:sore_app_with_firebase/feaures/authentication/controller/login%20controller/login_controller.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/images_string.dart';
@@ -12,6 +14,7 @@ class TSocialMediaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final LoginController controller = Get.put(LoginController());
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -23,7 +26,7 @@ class TSocialMediaButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () async => await controller.signWithGoogle(),
             icon: SvgPicture.asset(
               height: TSizes.iconMd,
               width: TSizes.iconMd,
@@ -54,5 +57,3 @@ class TSocialMediaButton extends StatelessWidget {
     );
   }
 }
-
-
