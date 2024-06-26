@@ -7,6 +7,7 @@ import 'package:sore_app_with_firebase/bottom_nav_bar.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/valribals.dart';
 import 'package:sore_app_with_firebase/core/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:sore_app_with_firebase/core/utils/exceptions/format_excepations.dart';
+import 'package:sore_app_with_firebase/data/user/user_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/login/login_screen.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/signup/verifyemail_screen.dart';
 
@@ -23,6 +24,7 @@ class AuthenticationRepository extends GetxController {
     screenRidrect();
   }
 
+  User? get authUser => _auth.currentUser;
   void screenRidrect() async {
     final User? user = _auth.currentUser;
     final SharedPreferences divaiceStrorage =
@@ -146,6 +148,44 @@ class AuthenticationRepository extends GetxController {
   Future<void> sendPasswordResetEmail({required String email}) async {
     try {
       await _auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(
+        e.message,
+      );
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<void> reAuthenticationEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      final AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
+
+      await _auth.currentUser!.reauthenticateWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(
+        e.message,
+      );
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<void> deleteAccount() async {
+    try {
+      await UserRepository.instance
+          .deleteUserDetails(AuthenticationRepository.instance.authUser?.uid);
+      await _auth.currentUser?.delete();
     } on FirebaseAuthException catch (e) {
       throw TFirebaseAuthException(code: e.code).errorMessage;
     } on FirebaseException catch (e) {

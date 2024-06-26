@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,22 +20,12 @@ class OnBoardingController extends GetxController {
     );
   }
 
-  void nextPage() async{
+  void nextPage() async {
     if (currentPage.value == 2) {
-      
-  final SharedPreferences storage = await
-      SharedPreferences.getInstance();
-      if (kDebugMode) {
-        print(
-            "=================== GET STORAGE next button ======================");
-        print(storage.getBool(IS_FIRST_TIME));
-      }
+      final SharedPreferences storage = await SharedPreferences.getInstance();
+
       storage.setBool(IS_FIRST_TIME, false);
-      if (kDebugMode) {
-        print(
-            "=================== GET STORAGE next button ======================");
-        print(storage.getBool(IS_FIRST_TIME));
-      }
+
       Get.offAll(const LoginScreen());
     } else {
       currentPage.value = currentPage.value + 1;

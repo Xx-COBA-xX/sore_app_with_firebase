@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
-import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
-import 'package:sore_app_with_firebase/core/utils/popups/full_screen_loadder.dart';
 import 'package:sore_app_with_firebase/core/utils/validators/validator.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/controller/login%20controller/login_controller.dart';
 
 import '../../../../../core/common/widgets/custom/custom_icon_button.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../passwrod_configration/forget_password.dart';
 import '../../signup/signup_screen.dart';
 
 class TLoginForm extends StatelessWidget {
@@ -84,14 +83,11 @@ class TLoginForm extends StatelessWidget {
                 ),
                 //? forgot password
                 TextButton(
-                    child: const Text(
-                      "Forgot Password?",
-                    ),
-                    // onPressed: () => Get.to(const ForgetPasswordScreen()),
-                    onPressed: () => Get.to(
-                          () => TFullScreenLoader.opneLoadeingDialog(
-                              "hhaerhd", TImages.loaderAnimation),
-                        )),
+                  child: const Text(
+                    "Forgot Password?",
+                  ),
+                  onPressed: () => Get.to(const ForgetPasswordScreen()),
+                )
               ],
             ),
             const SizedBox(

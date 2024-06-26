@@ -28,11 +28,11 @@ class VerifyEmailScreen extends StatelessWidget {
             child: const Icon(
               CupertinoIcons.clear,
             ),
-            onPressed:()=> AuthenticationRepository.instance.signOut()
+            onPressed: () async =>
+                await AuthenticationRepository.instance.signOut(),
           )
         ],
       ),
-      
       body: Padding(
         padding: const EdgeInsets.symmetric(
             horizontal: TSizes.defaultSpace, vertical: TSizes.defaultSpace),
@@ -73,7 +73,8 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: controller.checkEmailVerifycationStatus(),
+                  onPressed: () async =>
+                      await controller.checkEmailVerifycationStatus(),
                   child: const Text("Contiune"),
                 ),
               ),
@@ -83,7 +84,8 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: OutlinedButton(
-                  onPressed: controller.setTimperToAuthRedirect(),
+                  onPressed: () async =>
+                      await controller.setTimperToAuthRedirect(),
                   child: const Text("Resend Email"),
                 ),
               ),

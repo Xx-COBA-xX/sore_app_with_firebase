@@ -7,7 +7,7 @@ import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/valribals.dart';
 import 'package:sore_app_with_firebase/core/utils/popups/full_screen_loadder.dart';
 import 'package:sore_app_with_firebase/data/repository/authentication/auth_repositry.dart';
-import 'package:sore_app_with_firebase/feaures/personalization/controller/user_controller.dart';
+import 'package:sore_app_with_firebase/feaures/personalization/controller/user/user_controller.dart';
 
 import '../../../../core/utils/network/network_manager.dart';
 

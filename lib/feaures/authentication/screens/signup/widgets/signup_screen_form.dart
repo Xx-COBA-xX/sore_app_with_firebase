@@ -119,7 +119,7 @@ class SignupScreenForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => controller.signUp(),
+              onPressed: () async=> await controller.signUp(),
               child: const Text("Creage Account"),
             ),
           ),

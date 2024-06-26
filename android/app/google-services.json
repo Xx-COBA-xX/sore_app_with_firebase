@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "472828213141",
-    "project_id": "ecommerceapp-d7af8",
-    "storage_bucket": "ecommerceapp-d7af8.appspot.com"
+    "project_number": "518794713640",
+    "project_id": "t-store-app-747b1",
+    "storage_bucket": "t-store-app-747b1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:472828213141:android:dcc58013f799bbbba6a89c",
+        "mobilesdk_app_id": "1:518794713640:android:527cc3cec8dfe23e17331d",
         "android_client_info": {
           "package_name": "com.example.sore_app_with_firebase"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAYwYrnHlpfg5t-5EX6zyiOwXzcKBr0Yek"
+          "current_key": "AIzaSyCCDFrHQWXeu6_a6zATby0XX80vpQZsJjA"
         }
       ],
       "services": {

@@ -9,6 +9,8 @@ import 'package:sore_app_with_firebase/core/utils/popups/full_screen_loadder.dar
 import 'package:sore_app_with_firebase/data/repository/authentication/auth_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/signup/verifyemail_screen.dart';
 
+import '../../../../data/user/user_repositry.dart';
+import '../../models/user/user_model.dart';
 
 class SignUpController extends GetxController {
   static SignUpController get instance => Get.find();
@@ -45,7 +47,9 @@ class SignUpController extends GetxController {
       }
 
       //! check the {PRIVACY POLICY} checkbox
-      if (!privacyPolicy.value) {
+      if (privacyPolicy.value == false) {
+        TFullScreenLoader.stopLoading();
+
         TLoaders.waringSnackBar(
             title: "Accept the privacy policy",
             message:
@@ -58,17 +62,17 @@ class SignUpController extends GetxController {
           await authenticationRepository.registerEmailAndPassword(
               email: email.text.trim(), password: password.text.trim());
 
-      // final UserModel userModel = UserModel(
-      //     firstName: firstName.text,
-      //     lastName: lastName.text,
-      //     email: email.text,
-      //     phoneNumber: phoneNumber.text,
-      //     username: username.text,
-      //     profilePicture: "",
-      //     uid: userCredential.user!.uid);
+      final UserModel userModel = UserModel(
+          firstName: firstName.text,
+          lastName: lastName.text,
+          email: email.text,
+          phoneNumber: phoneNumber.text,
+          username: username.text,
+          profilePicture: "",
+          uid: userCredential.user!.uid);
 
-      // final UserRepository userRepository = Get.put(UserRepository());
-      // await userRepository.saveUserRecord(userModel);
+      final UserRepository userRepository = Get.put(UserRepository());
+      await userRepository.saveUserRecord(userModel);
 
       TFullScreenLoader.stopLoading();
 
@@ -77,9 +81,6 @@ class SignUpController extends GetxController {
           message:
               "Your account has been created, please verify your email address");
 
-      // Navigator.of(Get.overlayContext!).push(MaterialPageRoute(
-      //   builder: (context) => const VerifyEmailScreen(),
-      // ));
       Get.to(() => VerifyEmailScreen(
             email: email.text.trim(),
           ));

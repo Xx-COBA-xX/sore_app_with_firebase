@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sore_app_with_firebase/core/utils/formatters/app_formatter.dart';
 
@@ -51,14 +50,31 @@ class UserModel {
 
   factory UserModel.formSnapShot(
       DocumentSnapshot<Map<String, dynamic>> documnt) {
+    if (documnt.data() != null) {
+      final data = documnt.data();
+      return UserModel(
+        firstName: data?['firstName'] ?? "",
+        lastName: data?['lastName'] ?? "",
+        email: data?['email'] ?? "",
+        phoneNumber: data?['phoneNumber'] ?? "",
+        username: data?['username'] ?? "",
+        profilePicture: data?['profilePicture'] ?? "",
+        uid: data?['uid'] ?? "",
+      );
+    } else {
+      return UserModel.empty();
+    }
+  }
+
+  factory UserModel.empty() {
     return UserModel(
-      firstName: documnt['firstName'] ?? "",
-      lastName: documnt['lastName'] ?? "",
-      email: documnt['email'] ?? "",
-      phoneNumber: documnt['phoneNumber'] ?? "",
-      username: documnt['username'] ?? "",
-      profilePicture: documnt['profilePicture'] ?? "",
-      uid: documnt['uid'] ?? "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      username: "",
+      profilePicture: "",
+      uid: "",
     );
   }
 }

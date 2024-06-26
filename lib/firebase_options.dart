@@ -44,37 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAtN9hz6HL5ScZG1vgiil9FQLk1efFfT7w',
-    appId: '1:472828213141:web:7408e8ef1d5354d4a6a89c',
-    messagingSenderId: '472828213141',
-    projectId: 'ecommerceapp-d7af8',
-    authDomain: 'ecommerceapp-d7af8.firebaseapp.com',
-    storageBucket: 'ecommerceapp-d7af8.appspot.com',
+    apiKey: 'AIzaSyBroqawypoG7fycazFndVnTD_pKeBqo7VU',
+    appId: '1:518794713640:web:86a50e68acf6c34b17331d',
+    messagingSenderId: '518794713640',
+    projectId: 't-store-app-747b1',
+    authDomain: 't-store-app-747b1.firebaseapp.com',
+    storageBucket: 't-store-app-747b1.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAYwYrnHlpfg5t-5EX6zyiOwXzcKBr0Yek',
-    appId: '1:472828213141:android:dcc58013f799bbbba6a89c',
-    messagingSenderId: '472828213141',
-    projectId: 'ecommerceapp-d7af8',
-    storageBucket: 'ecommerceapp-d7af8.appspot.com',
+    apiKey: 'AIzaSyCCDFrHQWXeu6_a6zATby0XX80vpQZsJjA',
+    appId: '1:518794713640:android:527cc3cec8dfe23e17331d',
+    messagingSenderId: '518794713640',
+    projectId: 't-store-app-747b1',
+    storageBucket: 't-store-app-747b1.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBQ2bHgRH9hA4eonxHQhjPcdqUthN5oMC0',
-    appId: '1:472828213141:ios:b297161a044c8a57a6a89c',
-    messagingSenderId: '472828213141',
-    projectId: 'ecommerceapp-d7af8',
-    storageBucket: 'ecommerceapp-d7af8.appspot.com',
+    apiKey: 'AIzaSyDPp6nkGrHE_nLDAz0121SgUSvznl7y1aQ',
+    appId: '1:518794713640:ios:56938f78cbba8d8217331d',
+    messagingSenderId: '518794713640',
+    projectId: 't-store-app-747b1',
+    storageBucket: 't-store-app-747b1.appspot.com',
     iosBundleId: 'com.example.soreAppWithFirebase',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAtN9hz6HL5ScZG1vgiil9FQLk1efFfT7w',
-    appId: '1:472828213141:web:04a250ba750df857a6a89c',
-    messagingSenderId: '472828213141',
-    projectId: 'ecommerceapp-d7af8',
-    authDomain: 'ecommerceapp-d7af8.firebaseapp.com',
-    storageBucket: 'ecommerceapp-d7af8.appspot.com',
+    apiKey: 'AIzaSyBroqawypoG7fycazFndVnTD_pKeBqo7VU',
+    appId: '1:518794713640:web:983689860daa8e0f17331d',
+    messagingSenderId: '518794713640',
+    projectId: 't-store-app-747b1',
+    authDomain: 't-store-app-747b1.firebaseapp.com',
+    storageBucket: 't-store-app-747b1.appspot.com',
   );
+
 }
