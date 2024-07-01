@@ -42,7 +42,7 @@ class TRoundedImage extends StatelessWidget {
                 imageUrl: imageUrl,
                 fit: fit,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    const TShimmerEffict(height: 55, width: 55),
+                    const TShimmerEffict(height: 170, width: double.infinity),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               )
             : Image.asset(

@@ -24,7 +24,7 @@ class StoreScreenBody extends StatelessWidget {
     final categories = CategoriesContorller.instance.allCategories();
     final isDark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(
-        length: 5,
+        length: categories.length,
         child: NestedScrollView(
           headerSliverBuilder: (_, innerBoxIsScrolled) {
             return [

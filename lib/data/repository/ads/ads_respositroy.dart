@@ -14,7 +14,7 @@ class AdsRepository extends GetxController {
   Future<List<AdModel>> getAllAds() async {
     try {
       final snapshot =
-          await _db.collection("Ads").where("active", isEqualTo: true).get();
+          await _db.collection("Ads").get();
       return snapshot.docs
           .map((document) => AdModel.fromSnapshot(document))
           .toList();

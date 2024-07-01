@@ -21,8 +21,8 @@ class AdModel {
       {
         final json = snapshot.data()!;
         return AdModel(
-          active: json['active'],
-          imageUrl: json['imageUrl'],
+          active: json['isActive']  ?? false,
+          imageUrl: json['imageUrl'] ?? "",
         );
       }
     } else {

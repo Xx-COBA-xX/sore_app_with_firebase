@@ -11,40 +11,42 @@ import '../../../../../core/utils/constants/sizes.dart';
 class AdsSliderImages extends StatelessWidget {
   const AdsSliderImages({
     super.key,
-    required this.images,
   });
-  final List<String> images;
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(AdsContorller());
     return Column(
       children: [
-        CarouselSlider(
-          items: images
-              .map((image) => TRoundedImage(
-                    imageUrl: image,
-                    fit: BoxFit.fill,
-                  ))
-              .toList(),
-          options: CarouselOptions(
-            autoPlay: true,
-            height: 170,
-            viewportFraction: 1,
-            onPageChanged: (index, reason) {
-              controller.onUpdateSlider(index);
-            },
+        Obx(
+          () => CarouselSlider(
+            items: controller.allAds
+                .map((ad) => TRoundedImage(
+                      imageUrl: ad.imageUrl,
+                      fit: BoxFit.fill,
+                      isNetworkImage: true,
+                    ))
+                .toList(),
+            options: CarouselOptions(
+              autoPlay: true,
+              height: 170,
+              viewportFraction: 1,
+              onPageChanged: (index, reason) {
+                controller.onUpdateSlider(index);
+              },
+            ),
           ),
         ),
         const SizedBox(
           height: TSizes.spaceBtwItems,
         ),
         Center(
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (int i = 0; i < 3; i++)
-                Obx(
-                  () => CircalerContainer(
+          child: Obx(
+            () => Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (int i = 0; i < controller.allAds.length; i++)
+                  CircalerContainer(
                     height: 5,
                     width: controller.curentSilderIndex.value == i ? 25 : 16,
                     color: controller.curentSilderIndex.value == i
@@ -52,8 +54,8 @@ class AdsSliderImages extends StatelessWidget {
                         : AppColors.grey,
                     margin: const EdgeInsets.symmetric(horizontal: 2),
                   ),
-                )
-            ],
+              ],
+            ),
           ),
         )
       ],
