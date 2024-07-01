@@ -9,7 +9,7 @@ import 'package:sore_app_with_firebase/core/utils/popups/full_screen_loadder.dar
 import 'package:sore_app_with_firebase/data/repository/authentication/auth_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/signup/verifyemail_screen.dart';
 
-import '../../../../data/user/user_repositry.dart';
+import '../../../../data/repository/user/user_repositry.dart';
 import '../../models/user/user_model.dart';
 
 class SignUpController extends GetxController {

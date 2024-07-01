@@ -11,7 +11,7 @@ import 'data/repository/authentication/auth_repositry.dart';
 
 void main() async {
   final WidgetsBinding binding = WidgetsFlutterBinding.ensureInitialized();
-
+  
   FlutterNativeSplash.preserve(widgetsBinding: binding);
 
   await Firebase.initializeApp(

@@ -26,7 +26,7 @@ class TSocialMediaButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () async => await controller.signWithGoogle(),
+            onPressed: () {},
             icon: SvgPicture.asset(
               height: TSizes.iconMd,
               width: TSizes.iconMd,
@@ -45,7 +45,7 @@ class TSocialMediaButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(100),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () async => await controller.signWithGoogle(),
             icon: SvgPicture.asset(
               height: TSizes.iconMd,
               width: TSizes.iconMd,

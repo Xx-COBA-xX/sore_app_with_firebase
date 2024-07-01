@@ -9,15 +9,16 @@ import '../../../../../core/common/widgets/custom/section_heading.dart';
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/images_string.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../models/categories/categories_model.dart';
 
 class TCategoryTab extends StatelessWidget {
   const TCategoryTab({
     super.key,
-    required this.isDark,
+    required this.isDark, required this.categories,
   });
 
   final bool isDark;
-
+  final CategoriesModel categories;
   @override
   Widget build(BuildContext context) {
     return ListView(

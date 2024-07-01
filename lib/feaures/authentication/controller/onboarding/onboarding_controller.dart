@@ -26,7 +26,7 @@ class OnBoardingController extends GetxController {
 
       storage.setBool(IS_FIRST_TIME, false);
 
-      Get.offAll(const LoginScreen());
+      Get.offAll(() => const LoginScreen());
     } else {
       currentPage.value = currentPage.value + 1;
       pageController.animateToPage(

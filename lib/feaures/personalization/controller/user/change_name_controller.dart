@@ -4,7 +4,7 @@ import 'package:sore_app_with_firebase/core/common/widgets/loaders/t_loaders.dar
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/network/network_manager.dart';
 import 'package:sore_app_with_firebase/core/utils/popups/full_screen_loadder.dart';
-import 'package:sore_app_with_firebase/data/user/user_repositry.dart';
+import 'package:sore_app_with_firebase/data/repository/user/user_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/models/user/user_model.dart';
 import 'package:sore_app_with_firebase/feaures/personalization/controller/user/user_controller.dart';
 

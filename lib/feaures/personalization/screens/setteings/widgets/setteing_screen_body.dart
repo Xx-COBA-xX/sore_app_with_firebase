@@ -130,7 +130,7 @@ class SetteingScreenBody extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: const Text("Sign Out"),
+                    child:  Text("Sign Out", style:Theme.of(context).textTheme.bodyLarge,),
                     onPressed: () async {
                       final SetteingsController controller =
                           Get.put(SetteingsController());

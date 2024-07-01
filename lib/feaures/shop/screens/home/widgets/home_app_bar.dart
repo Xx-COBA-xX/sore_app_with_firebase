@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sore_app_with_firebase/core/common/widgets/effict/shimmer_effict.dart';
+import 'package:sore_app_with_firebase/core/utils/shimmer/shimmer_effict.dart';
 import 'package:sore_app_with_firebase/feaures/personalization/controller/user/user_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/cart/cart_screen.dart';
 

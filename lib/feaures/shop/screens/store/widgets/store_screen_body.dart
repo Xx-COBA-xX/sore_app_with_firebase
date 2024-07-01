@@ -9,6 +9,7 @@ import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/shop/controller/categories/categories_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/brand/brands_screen.dart';
 
 import '../../../../../core/common/widgets/custom/brand/t_brand_card.dart';
@@ -20,95 +21,79 @@ class StoreScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoriesContorller.instance.allCategories();
     final isDark = THelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,
-      child: NestedScrollView(
-        headerSliverBuilder: (_, innerBoxIsScrolled) {
-          return [
-            SliverAppBar(
-              pinned: true,
-              floating: true,
-              expandedHeight: 355,
-              backgroundColor: isDark ? AppColors.black : AppColors.white,
-              flexibleSpace: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
-                child: ListView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: [
-                    const SizedBox(
-                      height: TSizes.spaceBtwItems,
-                    ),
-                    const CustomSearchBar(
-                      showBarckgound: false,
-                      showBorder: true,
-                      text: "Search in store",
-                      padding: EdgeInsets.zero,
-                    ),
-                    const SizedBox(
-                      height: TSizes.spaceBtwSections / 2,
-                    ),
-                    TSectionHeading(
-                      textColor: isDark ? AppColors.white : AppColors.black,
-                      title: "Featured Brands",
-                      showMore: true,
-                      onPressed: () => Get.to(
-                        () => const AllBrandsScreen(),
-                        transition: Transition.fadeIn,
-                        duration: const Duration(milliseconds: 300),
+        length: 5,
+        child: NestedScrollView(
+          headerSliverBuilder: (_, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                pinned: true,
+                floating: true,
+                expandedHeight: 355,
+                backgroundColor: isDark ? AppColors.black : AppColors.white,
+                flexibleSpace: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: TSizes.defaultSpace),
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems,
                       ),
-                      padding: EdgeInsets.zero,
-                    ),
-                    const SizedBox(
-                      height: TSizes.spaceBtwItems / 1.5,
-                    ),
-                    TGridLayout(
-                      mainAxisExtent: 70,
-                      itemCount: 4,
-                      padding: EdgeInsets.zero,
-                      itemBuilder: (context, index) => GestureDetector(
-                        onTap: () {},
-                        child: const TBrandCard(
-                          image: TImages.categoriesIcon1,
-                          title: "Nike",
+                      const CustomSearchBar(
+                        showBarckgound: false,
+                        showBorder: true,
+                        text: "Search in store",
+                        padding: EdgeInsets.zero,
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwSections / 2,
+                      ),
+                      TSectionHeading(
+                        textColor: isDark ? AppColors.white : AppColors.black,
+                        title: "Featured Brands",
+                        showMore: true,
+                        onPressed: () => Get.to(
+                          () => const AllBrandsScreen(),
+                          transition: Transition.fadeIn,
+                          duration: const Duration(milliseconds: 300),
+                        ),
+                        padding: EdgeInsets.zero,
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems / 1.5,
+                      ),
+                      TGridLayout(
+                        mainAxisExtent: 70,
+                        itemCount: 4,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (context, index) => GestureDetector(
+                          onTap: () {},
+                          child: const TBrandCard(
+                            image: TImages.categoriesIcon1,
+                            title: "Nike",
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              bottom: const TTabBar(
-                tabs: [
-                  Tab(
-                    child: Text("Featuerd"),
-                  ),
-                  Tab(
-                    child: Text("Clothes"),
-                  ),
-                  Tab(
-                    child: Text("Shoose"),
-                  ),
-                  Tab(
-                    child: Text("Electrc"),
-                  ),
-                  Tab(
-                    child: Text("Sport"),
-                  ),
-                ],
-              ),
-            )
-          ];
-        },
-        body: TabBarView(children: [
-          TCategoryTab(isDark: isDark),
-          TCategoryTab(isDark: isDark),
-          TCategoryTab(isDark: isDark),
-          TCategoryTab(isDark: isDark),
-          TCategoryTab(isDark: isDark),
-        ]),
-      ),
-    );
+                bottom: TTabBar(
+                    tabs: categories
+                        .map((element) => Tab(text: element.name))
+                        .toList()),
+              )
+            ];
+          },
+          body: TabBarView(
+            children: categories
+                .map((element) =>
+                    TCategoryTab(isDark: isDark, categories: element))
+                .toList(),
+          ),
+        ));
   }
 }

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:sore_app_with_firebase/core/common/widgets/effict/shimmer_effict.dart';
+import 'package:sore_app_with_firebase/core/utils/shimmer/shimmer_effict.dart';
 
 import '../../../utils/constants/sizes.dart';
 

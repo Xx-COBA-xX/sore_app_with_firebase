@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 
 class TShimmerEffict extends StatelessWidget {
@@ -21,7 +22,7 @@ class TShimmerEffict extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-          color: color,
+          color: color ?? (isDark ? AppColors.darkerGrey : AppColors.white),
           borderRadius: BorderRadius.circular(radius),
         ),
       ),

@@ -7,7 +7,7 @@ import 'package:sore_app_with_firebase/bottom_nav_bar.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/valribals.dart';
 import 'package:sore_app_with_firebase/core/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:sore_app_with_firebase/core/utils/exceptions/format_excepations.dart';
-import 'package:sore_app_with_firebase/data/user/user_repositry.dart';
+import 'package:sore_app_with_firebase/data/repository/user/user_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/login/login_screen.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/signup/verifyemail_screen.dart';
 

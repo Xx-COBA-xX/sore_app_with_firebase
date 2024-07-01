@@ -11,7 +11,7 @@ import 'package:sore_app_with_firebase/data/repository/authentication/auth_repos
 import 'package:sore_app_with_firebase/feaures/authentication/models/user/user_model.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/login/login_screen.dart';
 
-import '../../../../data/user/user_repositry.dart';
+import '../../../../data/repository/user/user_repositry.dart';
 import '../../screens/profile/widgets/re_authenticon_login_screen.dart';
 
 class UserController extends GetxController {
@@ -175,7 +175,7 @@ class UserController extends GetxController {
           uid: user.value.uid,
         );
       }
-      TLoaders.errorSnackBar(
+      TLoaders.successSnackBar(
           title: "Congratulations",
           message: "Your profile picture has been updated");
     } catch (e) {

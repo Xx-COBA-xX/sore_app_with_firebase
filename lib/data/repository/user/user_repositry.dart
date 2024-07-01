@@ -9,8 +9,8 @@ import 'package:sore_app_with_firebase/feaures/authentication/models/user/user_m
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-import '../../core/utils/exceptions/firebase_auth_exceptions.dart';
-import '../../core/utils/exceptions/format_excepations.dart';
+import '../../../core/utils/exceptions/firebase_auth_exceptions.dart';
+import '../../../core/utils/exceptions/format_excepations.dart';
 
 class UserRepository extends GetxController {
   static UserRepository get instance => Get.find<UserRepository>();

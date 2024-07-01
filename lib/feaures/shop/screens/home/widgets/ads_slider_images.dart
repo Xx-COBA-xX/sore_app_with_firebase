@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sore_app_with_firebase/feaures/shop/controller/home_controller.dart';
+import 'package:sore_app_with_firebase/feaures/shop/controller/ads/ads_controller.dart';
 
 import '../../../../../core/common/widgets/custom/contianer_widget/circaler_container.dart';
 import '../../../../../core/common/widgets/images/container_image.dart';
@@ -16,7 +16,7 @@ class AdsSliderImages extends StatelessWidget {
   final List<String> images;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(HomeController());
+    final controller = Get.put(AdsContorller());
     return Column(
       children: [
         CarouselSlider(
