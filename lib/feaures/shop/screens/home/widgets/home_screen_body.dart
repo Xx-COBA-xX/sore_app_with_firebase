@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
 
-import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/popular_product/popular_product.dart';
 
@@ -13,7 +12,6 @@ import '../../../../../core/common/widgets/custom/contianer_widget/custom_search
 import '../../../../../core/common/widgets/custom/contianer_widget/primery_headlng_container.dart';
 import '../../../../../core/common/widgets/custom/product/product_card_viertical.dart';
 import '../../../../../core/common/widgets/custom/section_heading.dart';
-import '../../../controller/ads/ads_controller.dart';
 import 'ads_slider_images.dart';
 import 'custom_popular_categories_widget.dart';
 import 'home_app_bar.dart';

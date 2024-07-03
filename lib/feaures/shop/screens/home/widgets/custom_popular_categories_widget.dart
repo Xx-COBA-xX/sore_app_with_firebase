@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,11 +51,23 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
                     ),
                     child: Padding(
                         padding: const EdgeInsets.all(10),
-                        child: Image.asset(
-                          TImages.categoriesIcon1,
-                          fit: BoxFit.cover,
-                          color: AppColors.black,
-                        )),
+                        child: controller.allCategories[index].image.isEmpty
+                            ? Image.asset(
+                                TImages.categoriesIcon1,
+                                fit: BoxFit.cover,
+                                color: AppColors.black,
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: controller.allCategories[index].image,
+                                fit: BoxFit.contain,
+                                // progressIndicatorBuilder:
+                                //     (context, url, downloadProgress) =>
+                                //         const TShimmerEffict(
+                                //             height: 170,
+                                //             width: double.infinity),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              )),
                   ),
                 ),
                 const SizedBox(
@@ -79,7 +92,7 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
               width: TSizes.spaceBtwItems,
             );
           },
-          itemCount:controller.allCategories.length,
+          itemCount: controller.allCategories.length,
         ),
       );
     });
