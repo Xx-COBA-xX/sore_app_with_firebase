@@ -3,32 +3,43 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:readmore/readmore.dart';
+
 import 'package:sore_app_with_firebase/core/common/widgets/custom/custom_icon_button.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/section_heading.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
-
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/feaures/shop/models/prodcut/pruduct_model.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/product_reviews/prodcut_reviewes_screen.dart';
 
 import '../../../../../core/utils/helpers/helper_func.dart';
+import '../../../controller/product/image_controller.dart';
 import 'product_atributes.dart';
 import 'product_image_view.dart';
 import 'product_meta_data.dart';
 import 'product_raiting_and_share.dart';
 
 class ProductDetailsScreenBody extends StatelessWidget {
-  const ProductDetailsScreenBody({super.key});
-
+  const ProductDetailsScreenBody({
+    super.key,
+    required this.product,
+  });
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     final isDark = THelperFunctions.isDarkMode(context);
+    final ImageController imageController = Get.put(ImageController());
+    final images = imageController.getAllProductImages(product);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //? Product Image Viwe
-          ProductImageView(isDark: isDark),
-
+          ProductImageView(
+            imageController: imageController,
+            product: product,
+            images: images,
+            isDark: isDark,
+          ),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),

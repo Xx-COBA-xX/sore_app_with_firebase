@@ -1,31 +1,43 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+
 import 'package:sore_app_with_firebase/core/utils/constants/enums.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/shop/controller/product/product_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/product_details/product_details.dart';
 
+import '../../../../../feaures/shop/models/prodcut/pruduct_model.dart';
 import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/images_string.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../style/product_card_shadow.dart';
 import '../../images/container_image.dart';
 import '../contianer_widget/rounded_container.dart';
+import '../text/t_brand_title_text.dart';
 import 'product_price_widget.dart';
 import 'product_title_widget.dart';
-import '../text/t_brand_title_text.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({
     super.key,
+    required this.product,
   });
-
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final pricePercent =
+        controller.calculateSalePercent(product.price, product.salePrice);
+
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProdcutDetails(),
+      onTap: () => Get.to(
+          () => ProdcutDetails(
+                productModel: product,
+                
+              ),
           transition: Transition.fadeIn,
           duration: const Duration(milliseconds: 300)),
       child: Container(
@@ -34,40 +46,44 @@ class TProductCardVertical extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [TShadowStyle.productShadowStyle],
           borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-          color: dark ? AppColors.darkGrey : AppColors.white,
+          color: dark ? AppColors.darkerGrey : AppColors.white,
         ),
         child: Column(
           children: [
             TRoundedContainer(
               height: 150,
-              padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? AppColors.dark : AppColors.light,
               child: Stack(
                 children: [
-                  const TRoundedImage(
-                    imageUrl: TImages.product1,
-                    fit: BoxFit.cover,
+                  TRoundedImage(
+                    imageUrl: product.thumbnail,
+                    // imageUrl: TImages.product1,
+                    isNetworkImage: true,
+                    fit: BoxFit.contain,
                   ),
-                  Positioned(
-                    top: 0,
-                    child: TRoundedContainer(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
-                      backgroundColor: AppColors.secondary.withOpacity(.8),
-                      reduis: TSizes.sm,
-                      child: Text(
-                        "-25%",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall!
-                            .apply(color: AppColors.black),
+                  if (product.salePrice > 0)
+                    Positioned(
+                      top: 7,
+                      left: 5,
+                      child: TRoundedContainer(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: TSizes.sm, vertical: TSizes.xs),
+                        backgroundColor: AppColors.secondary.withOpacity(.8),
+                        reduis: TSizes.sm,
+                        child: Text(
+                          "-$pricePercent%",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .apply(color: AppColors.black),
+                        ),
                       ),
                     ),
-                  ),
                   Positioned(
-                    right: -16,
-                    top: -16,
+                    right: 0,
+                    top: 0,
                     child: CupertinoButton(
+                      padding: EdgeInsets.zero,
                       onPressed: () {},
                       child: TRoundedContainer(
                         backgroundColor: dark
@@ -91,21 +107,22 @@ class TProductCardVertical extends StatelessWidget {
             const SizedBox(
               height: TSizes.spaceBtwItems / 2,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: TSizes.xs),
+            Padding(
+              padding: const EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TProducTitle(
-                    title: "White Nike Ari Shose with white ",
+                    maxLine: 2,
+                    title: product.title,
                     smallTitle: true,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: TSizes.spaceBtwItems / 3,
                   ),
                   TBrandTitleText(
-                    title: "Nike",
+                    title: product.brand!.name,
                     iconColor: AppColors.primary,
                     maxLine: 1,
                     textSizes: TextSizes.large,
@@ -117,9 +134,36 @@ class TProductCardVertical extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(
-                  child: TProductPrice(
-                    price: "35.5",
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
+                        Padding(
+                          padding: const EdgeInsets.only(left: TSizes.sm - 2),
+                          child: Text(
+                            "\$${(product.price).toString()}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelMedium!
+                                .apply(decoration: TextDecoration.lineThrough),
+                          ),
+                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: TSizes.sm),
+                        child: TProductPrice(
+                          price: controller.getProductsPrice(product),
+                        ),
+                      ),
+                      if (product.productType ==
+                              ProductType.single.toString() &&
+                          product.salePrice > 0)
+                        const SizedBox(
+                          height: TSizes.xs,
+                        )
+                    ],
                   ),
                 ),
                 Container(

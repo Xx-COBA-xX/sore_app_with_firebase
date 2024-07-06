@@ -2,4 +2,16 @@ enum TextSizes { small, medium, large }
 
 enum OrderStatus { processing, shipped, delivered }
 
-enum PaymentMethods { paypat, googtePay, applePay, visa, masterCard, creditCard, paystack, razorPay, paytm }
+enum PaymentMethods {
+  paypat,
+  googtePay,
+  applePay,
+  visa,
+  masterCard,
+  creditCard,
+  paystack,
+  razorPay,
+  paytm
+}
+
+enum ProductType { single, available }

@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/product/product_card_viertical.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/feaures/shop/models/prodcut/pruduct_model.dart';
 
 class PopularProductScreenBody extends StatelessWidget {
   const PopularProductScreenBody({super.key});
@@ -38,7 +38,9 @@ class PopularProductScreenBody extends StatelessWidget {
             TGridLayout(
                 padding: EdgeInsets.zero,
                 itemCount: 6,
-                itemBuilder: (context, index) => const TProductCardVertical())
+                itemBuilder: (context, index) => TProductCardVertical(
+                      product: ProductModel.empty(),
+                    ))
           ],
         ),
       ),

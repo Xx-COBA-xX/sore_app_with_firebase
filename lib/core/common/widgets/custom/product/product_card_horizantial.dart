@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -10,6 +9,7 @@ import 'package:sore_app_with_firebase/core/common/widgets/images/container_imag
 import 'package:sore_app_with_firebase/core/utils/constants/enums.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/shop/models/prodcut/pruduct_model.dart';
 
 import '../../../../../feaures/shop/screens/product_details/product_details.dart';
 import '../../../../utils/constants/colors.dart';
@@ -23,7 +23,10 @@ class ProductCardHorizantial extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const ProdcutDetails(),
+      onTap: () => Get.to(
+          () => ProdcutDetails(
+                productModel: ProductModel.empty(),
+              ),
           transition: Transition.fadeIn,
           duration: const Duration(milliseconds: 300)),
       child: Container(

@@ -8,7 +8,7 @@ class TRoundedImage extends StatelessWidget {
   const TRoundedImage({
     super.key,
     required this.imageUrl,
-    this.borderRadius = TSizes.md,
+    this.borderRadius = TSizes.md-4,
     this.isNetworkImage = false,
     this.fit = BoxFit.contain,
     this.width,
@@ -39,6 +39,7 @@ class TRoundedImage extends StatelessWidget {
         ),
         child: isNetworkImage
             ? CachedNetworkImage(
+                width: width,
                 imageUrl: imageUrl,
                 fit: fit,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>

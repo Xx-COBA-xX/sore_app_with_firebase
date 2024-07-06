@@ -9,6 +9,7 @@ import 'package:sore_app_with_firebase/feaures/shop/screens/sub_categorie/sub_ca
 import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/images_string.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../../../core/utils/shimmer/shimmer_effict.dart';
 
 class CustomPopularCategoriesWidget extends StatelessWidget {
   const CustomPopularCategoriesWidget({
@@ -60,11 +61,11 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
                             : CachedNetworkImage(
                                 imageUrl: controller.allCategories[index].image,
                                 fit: BoxFit.contain,
-                                // progressIndicatorBuilder:
-                                //     (context, url, downloadProgress) =>
-                                //         const TShimmerEffict(
-                                //             height: 170,
-                                //             width: double.infinity),
+                                progressIndicatorBuilder:
+                                    (context, url, downloadProgress) =>
+                                        const TShimmerEffict(
+                                            height: 170,
+                                            width: double.infinity),
                                 errorWidget: (context, url, error) =>
                                     const Icon(Icons.error),
                               )),

@@ -19,21 +19,28 @@ class AdsSliderImages extends StatelessWidget {
     return Column(
       children: [
         Obx(
-          () => CarouselSlider(
-            items: controller.allAds
-                .map((ad) => TRoundedImage(
+          () => Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
+            child: CarouselSlider(
+              items: controller.allAds
+                  .map(
+                    (ad) => TRoundedImage(
+                      width: double.infinity,
                       imageUrl: ad.imageUrl,
                       fit: BoxFit.fill,
                       isNetworkImage: true,
-                    ))
-                .toList(),
-            options: CarouselOptions(
-              autoPlay: true,
-              height: 170,
-              viewportFraction: 1,
-              onPageChanged: (index, reason) {
-                controller.onUpdateSlider(index);
-              },
+                    ),
+                  )
+                  .toList(),
+              options: CarouselOptions(
+                autoPlay: true,
+                height: 170,
+                viewportFraction: 1,
+                onPageChanged: (index, reason) {
+                  controller.onUpdateSlider(index);
+                },
+              ),
             ),
           ),
         ),

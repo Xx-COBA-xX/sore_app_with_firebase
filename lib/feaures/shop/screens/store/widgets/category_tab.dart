@@ -10,11 +10,13 @@ import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/images_string.dart';
 import '../../../../../core/utils/constants/sizes.dart';
 import '../../../models/categories/categories_model.dart';
+import '../../../models/prodcut/pruduct_model.dart';
 
 class TCategoryTab extends StatelessWidget {
   const TCategoryTab({
     super.key,
-    required this.isDark, required this.categories,
+    required this.isDark,
+    required this.categories,
   });
 
   final bool isDark;
@@ -71,7 +73,9 @@ class TCategoryTab extends StatelessWidget {
         ),
         TGridLayout(
           itemCount: 4,
-          itemBuilder: (context, index) => const TProductCardVertical(),
+          itemBuilder: (context, index) => TProductCardVertical(
+            product: ProductModel.empty(),
+          ),
         ),
         const SizedBox(
           height: TSizes.spaceBtwItems,

@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/chips/chose_chips.dart';
 
 import 'package:sore_app_with_firebase/core/common/widgets/custom/contianer_widget/rounded_container.dart';
@@ -13,9 +12,9 @@ import '../../../../../core/utils/constants/colors.dart';
 
 class ProductAtributes extends StatelessWidget {
   const ProductAtributes({
-    Key? key,
+    super.key,
     required this.isDark,
-  }) : super(key: key);
+  });
   final bool isDark;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class ProductAtributes extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TRoundedContainer(
-          backgroundColor: isDark ? AppColors.darkGrey : AppColors.lightGrey,
+          backgroundColor: isDark ? AppColors.darkerGrey : AppColors.light,
           padding: const EdgeInsets.all(TSizes.md),
           child: Column(
             children: [

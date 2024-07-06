@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/product/product_card_viertical.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/feaures/shop/models/prodcut/pruduct_model.dart';
 
 class WishlistScreenBody extends StatelessWidget {
   const WishlistScreenBody({super.key});
@@ -16,7 +17,9 @@ class WishlistScreenBody extends StatelessWidget {
           ),
           TGridLayout(
               itemCount: 6,
-              itemBuilder: (context, index) => const TProductCardVertical())
+              itemBuilder: (context, index) => TProductCardVertical(
+                    product: ProductModel.empty(),
+                  ))
         ],
       ),
     );
