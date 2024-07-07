@@ -47,8 +47,12 @@ class ProductDetailsScreenBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const ProductRaitingAndShare(),
-                ProductMetaData(isDark: isDark),
+                ProductMetaData(
+                  isDark: isDark,
+                  product: product,
+                ),
                 ProductAtributes(
+                  product: product,
                   isDark: isDark,
                 ),
                 const SizedBox(
@@ -70,15 +74,15 @@ class ProductDetailsScreenBody extends StatelessWidget {
                 const SizedBox(
                   height: TSizes.spaceBtwItems,
                 ),
-                const ReadMoreText(
-                  "this is the description of  idaherhakdf akjd falkjdf alkdf jeljr alkjer some of the line in this product jadljfaerthe project and the project description is available ",
+                ReadMoreText(
+                  "${product.description}",
                   trimLines: 2,
                   trimMode: TrimMode.Line,
                   trimCollapsedText: 'Show more',
                   trimExpandedText: 'less',
-                  moreStyle: TextStyle(
+                  moreStyle: const TextStyle(
                       color: AppColors.primary, fontWeight: FontWeight.w800),
-                  lessStyle: TextStyle(
+                  lessStyle: const TextStyle(
                       color: AppColors.primary, fontWeight: FontWeight.w800),
                 ),
                 const SizedBox(

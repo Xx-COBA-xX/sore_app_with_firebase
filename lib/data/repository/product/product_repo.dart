@@ -34,4 +34,47 @@ class ProductRepo extends GetxController {
       throw Exception(e.toString());
     }
   }
+
+  Future<List<ProductModel>> getAllProducts() async {
+    // Fetch products from API
+    try {
+      final snapshot = await _db
+          .collection("Products")
+          .where("isFeatured", isEqualTo: true)
+          .get();
+      return snapshot.docs
+          .map((element) => ProductModel.fromSnapshot(element))
+          .toList();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(
+        e.message,
+      );
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  Future<List<ProductModel>> getProductsByQuery(Query query) async {
+    // Fetch products from API
+    try {
+      final snapshot = await query.get();
+      return snapshot.docs
+          .map((product) => ProductModel.fromQuerySnapshot(product))
+          .toList();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(
+        e.message,
+      );
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }

@@ -31,6 +31,17 @@ class ProductController extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> fetchAllProducts() async {
+    try {
+      final productsList = await repo.getAllProducts();
+      return productsList;
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: "Oh Sanp!", message: "Failed to fetch products.$e");
+      return [];
+    } 
+  }
+
   getProductsPrice(ProductModel product) {
     double smallestPrice = double.infinity;
     double largestPrice = 0.0;
@@ -64,12 +75,11 @@ class ProductController extends GetxController {
     if (originalPrice <= 0) return null;
 
     double percent = ((originalPrice - salePrice) / originalPrice) * 100;
-    if(percent < 0) percent = percent * -1;
+    if (percent < 0) percent = percent * -1;
     return percent.toStringAsFixed(0);
   }
 
   String getProductStockStatus(int stock) {
     return stock > 0 ? "In Stock" : "Out of Stock";
-    
   }
 }

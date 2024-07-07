@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 import 'package:sore_app_with_firebase/feaures/shop/controller/product/product_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/popular_product/popular_product.dart';
 
@@ -21,7 +23,6 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final controller = Get.put(ProductController());
     return SingleChildScrollView(
       child: Column(
@@ -60,10 +61,15 @@ class HomeScreenBody extends StatelessWidget {
             height: TSizes.spaceBtwSections,
           ),
           TSectionHeading(
+            textColor: THelperFunctions.isDarkMode(context) ? AppColors.white : AppColors.dark,
             btnText: "View All",
             title: 'Popular Products',
             showMore: true,
-            onPressed: () => Get.to(() => const PopularProductScreen(),
+            onPressed: () => Get.to(
+                () => PopularProductScreen(
+                      fetchMethod: controller.fetchAllProducts(),
+                      title: 'Popular Products',
+                    ),
                 transition: Transition.fadeIn,
                 duration: const Duration(milliseconds: 300)),
           ),

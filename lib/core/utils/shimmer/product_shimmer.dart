@@ -16,6 +16,7 @@ class ProductShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TGridLayout(
+      mainAxisExtent: 250,
       itemCount: itemCount,
       itemBuilder: (_, index) => const SizedBox(
         width: 150,

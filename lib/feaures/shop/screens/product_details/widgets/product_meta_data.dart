@@ -7,27 +7,31 @@ import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/enums.dart';
 import '../../../../../core/utils/constants/images_string.dart';
 import '../../../../../core/utils/constants/sizes.dart';
+import '../../../models/prodcut/pruduct_model.dart';
 import 'product_price.dart';
 
 class ProductMetaData extends StatelessWidget {
   const ProductMetaData({
     super.key,
     required this.isDark,
+    required this.product,
   });
 
   final bool isDark;
-
+  final ProductModel product;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const ProductPrice(),
+        ProductPrice(
+          product: product,
+        ),
         const SizedBox(
           height: TSizes.spaceBtwItems / 1.5,
         ),
-        const TProducTitle(
-          title: "Nike T-Shirt with player image",
+        TProducTitle(
+          title: product.title,
         ),
         const SizedBox(
           height: TSizes.spaceBtwItems / 1.5,
@@ -41,7 +45,7 @@ class ProductMetaData extends StatelessWidget {
               width: TSizes.spaceBtwItems / 2,
             ),
             Text(
-              "In Stack",
+              product.stock > 0 ? "In Stock" : "Out of Stock",
               style: Theme.of(context).textTheme.titleMedium,
             )
           ],
@@ -58,8 +62,8 @@ class ProductMetaData extends StatelessWidget {
               width: 35,
               imageColor: isDark ? AppColors.white : AppColors.black,
             ),
-            const TBrandTitleText(
-              title: "Nike",
+            TBrandTitleText(
+              title: product.brand!.name,
               textSizes: TextSizes.medium,
             )
           ],
