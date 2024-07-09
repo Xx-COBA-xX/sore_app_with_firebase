@@ -57,7 +57,8 @@ class ProductMetaData extends StatelessWidget {
           children: [
             TCircalrImage(
               isDark: isDark,
-              image: TImages.categoriesIcon1,
+              isNetworkImage: false,
+              image: TImages.avatar,
               height: 35,
               width: 35,
               imageColor: isDark ? AppColors.white : AppColors.black,

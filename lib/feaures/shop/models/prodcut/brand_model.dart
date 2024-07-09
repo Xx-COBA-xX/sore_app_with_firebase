@@ -9,7 +9,7 @@ class BrandModel {
       required this.name,
       required this.image,
       this.productsCount,
-      this.isFeatured = false});
+});
 
   toJson() {
     return {
@@ -17,7 +17,7 @@ class BrandModel {
       'name': name,
       'image': image,
       'productsCount': productsCount,
-      'isFeatured': isFeatured,
+
     };
   }
 
@@ -27,7 +27,7 @@ class BrandModel {
       name: json['name'] ?? '',
       image: json['image'] ?? '',
       productsCount: json['productsCount'] ?? 0,
-      isFeatured: json['isFeatured'] ?? false,
+
     );
   }
 }

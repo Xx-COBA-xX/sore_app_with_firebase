@@ -6,9 +6,10 @@ import 'package:sore_app_with_firebase/core/common/widgets/custom/contianer_widg
 import 'package:sore_app_with_firebase/core/common/widgets/custom/layout/t_grid_layout.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/section_heading.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
-import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/core/utils/shimmer/brands_shimmer.dart';
+import 'package:sore_app_with_firebase/feaures/shop/controller/brands/brands_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/controller/categories/categories_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/screens/brand/brands_screen.dart';
 
@@ -23,6 +24,7 @@ class StoreScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final categories = CategoriesContorller.instance.allCategories();
     final isDark = THelperFunctions.isDarkMode(context);
+    final BrandsContorller brandsContorller = Get.put(BrandsContorller());
     return DefaultTabController(
         length: categories.length,
         child: NestedScrollView(
@@ -66,18 +68,36 @@ class StoreScreenBody extends StatelessWidget {
                       const SizedBox(
                         height: TSizes.spaceBtwItems / 1.5,
                       ),
-                      TGridLayout(
-                        mainAxisExtent: 70,
-                        itemCount: 4,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (context, index) => GestureDetector(
-                          onTap: () {},
-                          child: const TBrandCard(
-                            image: TImages.categoriesIcon1,
-                            title: "Nike",
+                      Obx(() {
+                        if (brandsContorller.isLoading.value) {
+                          return const TBrandsShimmer();
+                        }
+                        if (brandsContorller.featuredBrands.isEmpty) {
+                          return Center(
+                            child: Text(
+                              "No Brands Found",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                          );
+                        }
+                        return TGridLayout(
+                          mainAxisExtent: 70,
+                          itemCount: brandsContorller.featuredBrands.length,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) => GestureDetector(
+                            onTap: () {},
+                            child: TBrandCard(
+                              image: brandsContorller
+                                  .featuredBrands[index].imageUrl,
+                              title:
+                                  brandsContorller.featuredBrands[index].name,
+                              productNum:
+                                  "${brandsContorller.featuredBrands[index].productCount} Products",
+                              isNetworkImage: true,
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      }),
                     ],
                   ),
                 ),

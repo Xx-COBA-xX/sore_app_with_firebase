@@ -7,15 +7,17 @@ import '../../images/container_image.dart';
 import '../contianer_widget/rounded_container.dart';
 
 class TProductsBrandCard extends StatelessWidget {
-  const TProductsBrandCard(
-      {super.key,
-      required this.brandTitle,
-      required this.brandProuductItems,
-      required this.brandImage,
-      this.showBordnBorder = false,
-      this.showProductBrandBorder = false,
-      this.productBackgroundColor = AppColors.darkGrey,
-      required this.productsImages});
+  const TProductsBrandCard({
+    super.key,
+    required this.brandTitle,
+    required this.brandProuductItems,
+    required this.brandImage,
+    this.showBordnBorder = false,
+    this.showProductBrandBorder = false,
+    this.productBackgroundColor = AppColors.darkGrey,
+    required this.productsImages,
+    this.isNetworkImage = false,
+  });
   final String brandTitle;
   final String brandProuductItems;
   final String brandImage;
@@ -23,7 +25,7 @@ class TProductsBrandCard extends StatelessWidget {
   final bool? showProductBrandBorder;
   final List<String> productsImages;
   final Color? productBackgroundColor;
-
+  final bool isNetworkImage;
   @override
   Widget build(BuildContext context) {
     return TRoundedContainer(
@@ -33,6 +35,7 @@ class TProductsBrandCard extends StatelessWidget {
       child: Column(
         children: [
           TBrandCard(
+            isNetworkImage: isNetworkImage,
             title: brandTitle,
             image: brandImage,
             showBorder: showBordnBorder,

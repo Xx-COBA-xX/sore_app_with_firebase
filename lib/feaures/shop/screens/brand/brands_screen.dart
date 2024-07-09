@@ -8,6 +8,7 @@ class AllBrandsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,

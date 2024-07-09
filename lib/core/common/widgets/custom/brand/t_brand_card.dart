@@ -2,12 +2,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sore_app_with_firebase/core/common/widgets/images/t_circal_image.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
+
 import '../../../../utils/helpers/helper_func.dart';
-import '../../images/t_circal_image.dart';
 import '../contianer_widget/rounded_container.dart';
 import '../text/t_brand_title_text.dart';
 
@@ -45,30 +46,28 @@ class TBrandCard extends StatelessWidget {
           children: [
             Flexible(
               child: TCircalrImage(
-                isDark: isDark,
                 image: image,
-                bacgroundColor: Colors.transparent,
-                isNetworkImage: isNetworkImage,
+                fit: BoxFit.contain,
+                isDark: isDark,
+                isNetworkImage: isNetworkImage!,
                 imageColor: isDark ? AppColors.white : AppColors.black,
               ),
             ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TBrandTitleText(
-                    title: title,
-                    iconColor: AppColors.primary,
-                    textSizes: textSizes,
-                  ),
-                  Text(
-                    productNum!,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.labelMedium,
-                  )
-                ],
-              ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TBrandTitleText(
+                  title: title,
+                  iconColor: AppColors.primary,
+                  textSizes: textSizes,
+                ),
+                Text(
+                  productNum!,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.labelMedium,
+                )
+              ],
             )
           ],
         ),

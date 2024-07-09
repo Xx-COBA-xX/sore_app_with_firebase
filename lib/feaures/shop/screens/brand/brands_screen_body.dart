@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
+import 'package:sore_app_with_firebase/feaures/shop/controller/brands/brands_controller.dart';
 
 import '../../../../core/common/widgets/custom/brand/t_brand_card.dart';
 import '../../../../core/common/widgets/custom/layout/t_grid_layout.dart';
-import '../../../../core/utils/constants/images_string.dart';
+
 
 class AllBrandsScreenBody extends StatelessWidget {
   const AllBrandsScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = BrandsContorller.instance;
+    final brands = controller.allBrands;
     return SingleChildScrollView(
         child: Padding(
       padding: const EdgeInsets.symmetric(horizontal: TSizes.defaultSpace),
@@ -25,13 +28,15 @@ class AllBrandsScreenBody extends StatelessWidget {
           ),
           TGridLayout(
             mainAxisExtent: 70,
-            itemCount: 13,
+            itemCount: brands.length,
             padding: EdgeInsets.zero,
             itemBuilder: (context, index) => GestureDetector(
               onTap: () {},
               child: TBrandCard(
-                image: TImages.categoriesIcon1,
-                title: "Nike",
+                isNetworkImage: true,
+                productNum: "${brands[index].productCount} Products",
+                image: brands[index].imageUrl,
+                title: brands[index].name,
                 onPressed: () {},
               ),
             ),

@@ -54,7 +54,7 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
                         padding: const EdgeInsets.all(10),
                         child: controller.allCategories[index].image.isEmpty
                             ? Image.asset(
-                                TImages.categoriesIcon1,
+                                TImages.avatar,
                                 fit: BoxFit.cover,
                                 color: AppColors.black,
                               )

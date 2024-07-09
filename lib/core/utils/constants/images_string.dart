@@ -28,7 +28,7 @@ class TImages {
   static const user1 = "assets/icons/user1.svg";
   static const user = "assets/icons/user.svg";
 
-  static const categoriesIcon1 = "assets/icons/categories/cloths_icon.png";
+
 
   static const ad1 = "assets/images/ads/ad4.png";
   static const ad2 = "assets/images/ads/ad2.png";
