@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
 import 'package:sore_app_with_firebase/feaures/shop/controller/brands/brands_controller.dart';
+import 'package:sore_app_with_firebase/feaures/shop/screens/brand/brands_products.dart';
 
-import '../../../../core/common/widgets/custom/brand/t_brand_card.dart';
-import '../../../../core/common/widgets/custom/layout/t_grid_layout.dart';
-
+import '../../../../../core/common/widgets/custom/brand/t_brand_card.dart';
+import '../../../../../core/common/widgets/custom/layout/t_grid_layout.dart';
 
 class AllBrandsScreenBody extends StatelessWidget {
   const AllBrandsScreenBody({super.key});
@@ -37,7 +38,9 @@ class AllBrandsScreenBody extends StatelessWidget {
                 productNum: "${brands[index].productCount} Products",
                 image: brands[index].imageUrl,
                 title: brands[index].name,
-                onPressed: () {},
+                onPressed: () => Get.to(() => BrandProducts(
+                      brand: brands[index],
+                    )),
               ),
             ),
           )

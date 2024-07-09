@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sore_app_with_firebase/core/common/widgets/custom/costom_app_bar.dart';
 
-import 'brands_screen_body.dart';
+import 'widgets/brands_screen_body.dart';
 
 class AllBrandsScreen extends StatelessWidget {
   const AllBrandsScreen({super.key});

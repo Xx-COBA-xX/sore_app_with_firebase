@@ -77,4 +77,34 @@ class ProductRepo extends GetxController {
       throw Exception(e.toString());
     }
   }
+
+  Future<List<ProductModel>> getBrandProducts(
+      {required String brandId, int limit = -1}) async {
+    // Fetch products from API
+    try {
+      final list = limit == -1
+          ? await _db
+              .collection("Products")
+              .where("brand.id", isEqualTo: brandId)
+              .get()
+          : await _db
+              .collection("Products")
+              .where("brand.id", isEqualTo: brandId)
+              .limit(limit)
+              .get();
+      return list.docs
+          .map((product) => ProductModel.fromSnapshot(product))
+          .toList();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(
+        e.message,
+      );
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }

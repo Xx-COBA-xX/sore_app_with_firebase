@@ -2,19 +2,19 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:sore_app_with_firebase/core/common/widgets/images/t_circal_image.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/enums.dart';
 import '../../../../utils/constants/sizes.dart';
-
 import '../../../../utils/helpers/helper_func.dart';
 import '../contianer_widget/rounded_container.dart';
 import '../text/t_brand_title_text.dart';
 
 class TBrandCard extends StatelessWidget {
   const TBrandCard({
-    super.key,
+    Key? key,
     required this.title,
     this.productNum = "254 Product",
     this.showBorder = true,
@@ -23,7 +23,8 @@ class TBrandCard extends StatelessWidget {
     this.isNetworkImage = false,
     this.textSizes = TextSizes.large,
     this.onPressed,
-  });
+    this.margin,
+  }) : super(key: key);
   final String title;
   final String? productNum;
   final bool? showBorder;
@@ -32,6 +33,7 @@ class TBrandCard extends StatelessWidget {
   final bool? isNetworkImage;
   final TextSizes? textSizes;
   final void Function()? onPressed;
+  final EdgeInsets? margin;
   @override
   Widget build(BuildContext context) {
     final isDark = THelperFunctions.isDarkMode(context);
@@ -39,6 +41,7 @@ class TBrandCard extends StatelessWidget {
       onPressed: onPressed,
       padding: EdgeInsets.zero,
       child: TRoundedContainer(
+        margin: margin,
         backgroundColor: backgroundColor!,
         padding: const EdgeInsets.all(TSizes.sm),
         showBorder: showBorder!,

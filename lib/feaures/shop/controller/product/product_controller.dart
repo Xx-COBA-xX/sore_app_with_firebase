@@ -31,6 +31,19 @@ class ProductController extends GetxController {
     }
   }
 
+  Future<List<ProductModel>> fetchBrandProducts(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final products =
+          await repo.getBrandProducts(brandId: brandId, limit: limit);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: "Oh Sanp!", message: "Failed to fetch brand products.$e");
+      return [];
+    }
+  }
+
   Future<List<ProductModel>> fetchAllProducts() async {
     try {
       final productsList = await repo.getAllProducts();
@@ -39,7 +52,7 @@ class ProductController extends GetxController {
       TLoaders.errorSnackBar(
           title: "Oh Sanp!", message: "Failed to fetch products.$e");
       return [];
-    } 
+    }
   }
 
   getProductsPrice(ProductModel product) {
