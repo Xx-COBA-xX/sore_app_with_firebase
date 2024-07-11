@@ -28,7 +28,7 @@ class BrandProductsBody extends StatelessWidget {
             TBrandCard(
               title: brand.name,
               image: brand.imageUrl,
-              isNetworkImage: false,
+              isNetworkImage: true,
             ),
             const SizedBox(
               height: TSizes.spaceBtwSections,

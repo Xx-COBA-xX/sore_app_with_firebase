@@ -32,8 +32,8 @@ class CategoriesModel {
     if(document.data() != null){
       final data = document.data();
       return CategoriesModel(
-        id: document.id,
-        name: data!['name'] ?? "",
+        id: data!['id'] ?? "",
+        name: data['name'] ?? "",
         image: data['image']?? "",
         parentId: data['parentId']?? "",
         isFeatured: data['isFeatured']?? false,

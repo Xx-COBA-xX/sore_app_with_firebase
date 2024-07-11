@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
+import 'package:sore_app_with_firebase/core/utils/constants/images_string.dart';
 
 class THelperFunctions {
   static Color? getColor(String color) {
@@ -117,6 +119,17 @@ class THelperFunctions {
 
   static List<T> removeDuplicates<T>(List<T> list) {
     return list.toSet().toList();
+  }
+
+  static Widget noDataFound() {
+    return Center(
+      child: Lottie.asset(
+        TImages.noData,
+        backgroundLoading: false,
+        animate: true,
+
+      ),
+    );
   }
 
   static List<Widget> warpWidgets(List<Widget> widgets, int rowSize) {

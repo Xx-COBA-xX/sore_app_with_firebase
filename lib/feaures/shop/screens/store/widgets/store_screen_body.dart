@@ -111,7 +111,7 @@ class StoreScreenBody extends StatelessWidget {
           body: TabBarView(
             children: categories
                 .map((element) =>
-                    TCategoryTab(isDark: isDark, categories: element))
+                    TCategoryTab(isDark: isDark, category: element))
                 .toList(),
           ),
         ));

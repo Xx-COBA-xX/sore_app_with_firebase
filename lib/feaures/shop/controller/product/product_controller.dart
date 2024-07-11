@@ -9,7 +9,9 @@ class ProductController extends GetxController {
   static ProductController get instance => Get.find();
 
   final repo = Get.put(ProductRepo());
+
   RxList<ProductModel> products = <ProductModel>[].obs;
+
   Rx<bool> isLoading = false.obs;
 
   @override
@@ -94,5 +96,18 @@ class ProductController extends GetxController {
 
   String getProductStockStatus(int stock) {
     return stock > 0 ? "In Stock" : "Out of Stock";
+  }
+
+  Future<List<ProductModel>> fetchCategoryProducts(
+      {required String categoryId, int limit = -1}) async {
+    try {
+      final products = await repo.getProductsForCategory(
+          categoryId: categoryId, limit: limit);
+      return products;
+    } catch (e) {
+      TLoaders.errorSnackBar(
+          title: "Oh Sanp!", message: "Failed to fetch category products.$e");
+      return [];
+    }
   }
 }

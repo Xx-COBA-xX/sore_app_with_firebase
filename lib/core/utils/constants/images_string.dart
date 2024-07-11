@@ -41,4 +41,5 @@ class TImages {
   static const avatar = "assets/images/users/usrs.jpg";
 
   static const loaderAnimation = "assets/images/animations/loader.json";
+  static const noData = "assets/images/animations/no_data.json";
 }

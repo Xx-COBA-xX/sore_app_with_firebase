@@ -14,7 +14,7 @@ import '../text/t_brand_title_text.dart';
 
 class TBrandCard extends StatelessWidget {
   const TBrandCard({
-    Key? key,
+    super.key,
     required this.title,
     this.productNum = "254 Product",
     this.showBorder = true,
@@ -24,7 +24,7 @@ class TBrandCard extends StatelessWidget {
     this.textSizes = TextSizes.large,
     this.onPressed,
     this.margin,
-  }) : super(key: key);
+  });
   final String title;
   final String? productNum;
   final bool? showBorder;
