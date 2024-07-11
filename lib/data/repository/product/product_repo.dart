@@ -147,4 +147,28 @@ class ProductRepo extends GetxController {
       throw Exception(e.toString());
     }
   }
+
+
+  Future<List<ProductModel>> getFavoriteProducts({
+    required List<String> productsIds,
+  }) async {
+    try {
+      final QuerySnapshot<Map<String, dynamic>> productsQuery = await _db
+          .collection("Products")
+          .where(FieldPath.documentId, whereIn: productsIds)
+          .get();
+
+      return productsQuery.docs
+          .map((product) => ProductModel.fromSnapshot(product))
+          .toList();
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseAuthException(code: e.code).errorMessage;
+    } on FirebaseException catch (e) {
+      throw Exception(e.message);
+    } on FormatException catch (e) {
+      throw TFormatException(e.message).message;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }

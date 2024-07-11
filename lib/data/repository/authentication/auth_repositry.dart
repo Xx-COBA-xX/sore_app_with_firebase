@@ -7,6 +7,7 @@ import 'package:sore_app_with_firebase/bottom_nav_bar.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/valribals.dart';
 import 'package:sore_app_with_firebase/core/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:sore_app_with_firebase/core/utils/exceptions/format_excepations.dart';
+import 'package:sore_app_with_firebase/core/utils/local_storage/local_storage.dart';
 import 'package:sore_app_with_firebase/data/repository/user/user_repositry.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/login/login_screen.dart';
 import 'package:sore_app_with_firebase/feaures/authentication/screens/signup/verifyemail_screen.dart';
@@ -32,6 +33,10 @@ class AuthenticationRepository extends GetxController {
 
     if (user != null) {
       if (user.emailVerified) {
+        //* init user pucket data in local storage for faivorat products
+        TLocalStorage.init(user.uid);
+
+        //* save in local storat this user in not the first time jone to this app
         divaiceStrorage.setBool(IS_FIRST_TIME, false);
         Get.offAll(() => const BottomNavBar());
       } else {

@@ -40,7 +40,10 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
               children: [
                 CupertinoButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () => Get.to(() => const SubCategorieScreen(),
+                  onPressed: () => Get.to(
+                      () => SubCategorieScreen(
+                            category: controller.allCategories[index],
+                          ),
                       transition: Transition.fadeIn,
                       duration: const Duration(milliseconds: 300)),
                   child: Container(
@@ -83,6 +86,7 @@ class CustomPopularCategoriesWidget extends StatelessWidget {
                         ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ],

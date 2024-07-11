@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/core/utils/shimmer/product_shimmer.dart';
 
-import 'package:sore_app_with_firebase/feaures/shop/screens/sub_categorie/sub_categorie_screen.dart';
 
 import '../../../../../core/common/widgets/custom/layout/t_grid_layout.dart';
 import '../../../../../core/common/widgets/custom/product/product_card_viertical.dart';
@@ -41,7 +39,8 @@ class TCategoryTab extends StatelessWidget {
           height: TSizes.spaceBtwItems,
         ),
         FutureBuilder(
-            future: controller.fetchCategoryProducts(categoryId: category.id, limit: 4),
+            future: controller.fetchCategoryProducts(
+                categoryId: category.id, limit: 4),
             builder: (context, snapshot) {
               const loader = ProductShimmer(itemCount: 4);
               if (snapshot.connectionState == ConnectionState.waiting) {
@@ -60,11 +59,7 @@ class TCategoryTab extends StatelessWidget {
                     textColor: isDark ? AppColors.white : AppColors.black,
                     title: "Maghy Like",
                     showMore: true,
-                    onPressed: () => Get.to(
-                      () => const SubCategorieScreen(),
-                      transition: Transition.fadeIn,
-                      duration: const Duration(milliseconds: 300),
-                    ),
+                    onPressed: () {},
                     padding: const EdgeInsets.symmetric(
                         horizontal: TSizes.defaultSpace),
                   ),

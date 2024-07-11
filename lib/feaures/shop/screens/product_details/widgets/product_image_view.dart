@@ -2,15 +2,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'package:sore_app_with_firebase/core/common/widgets/custom/costom_app_bar.dart';
+import 'package:sore_app_with_firebase/core/common/widgets/custom/faivorat/faivorat_button_widget.dart';
 import 'package:sore_app_with_firebase/feaures/shop/controller/product/image_controller.dart';
 import 'package:sore_app_with_firebase/feaures/shop/models/prodcut/pruduct_model.dart';
 
-import '../../../../../core/common/widgets/custom/contianer_widget/t_circal_icon.dart';
 import '../../../../../core/common/widgets/custom/curved_edge/curved_edge_widget.dart';
 import '../../../../../core/utils/constants/colors.dart';
+import '../../../../../core/utils/helpers/helper_func.dart';
 import 'product_image_slider.dart';
 
 class ProductImageView extends StatelessWidget {
@@ -28,7 +28,9 @@ class ProductImageView extends StatelessWidget {
   final List<String> images;
   @override
   Widget build(BuildContext context) {
-    imageController.selectImage.value = imageController.getAllProductImages(product).first;
+    imageController.selectImage.value =
+        imageController.getAllProductImages(product).first;
+    final dark = THelperFunctions.isDarkMode(context);
     return TCurvedEdgesWidget(
       child: Container(
         color: isDark ? AppColors.darkerGrey : AppColors.lightGrey,
@@ -57,11 +59,9 @@ class ProductImageView extends StatelessWidget {
             TAppBar(
               showBackArrow: true,
               actions: [
-                TCircelarIcon(
-                  isDark: isDark,
-                  iconColor: Colors.red,
-                  onPressed: () {},
-                  icon: Iconsax.heart,
+                TFavoriteButtonWidget(
+                  dark: dark,
+                  productId: product.id,
                 )
               ],
             )

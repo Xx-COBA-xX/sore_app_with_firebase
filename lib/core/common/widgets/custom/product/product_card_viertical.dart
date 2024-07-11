@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -15,6 +14,7 @@ import '../../../../utils/constants/sizes.dart';
 import '../../../style/product_card_shadow.dart';
 import '../../images/container_image.dart';
 import '../contianer_widget/rounded_container.dart';
+import '../faivorat/faivorat_button_widget.dart';
 import '../text/t_brand_title_text.dart';
 import 'product_price_widget.dart';
 import 'product_title_widget.dart';
@@ -36,7 +36,6 @@ class TProductCardVertical extends StatelessWidget {
       onTap: () => Get.to(
           () => ProdcutDetails(
                 productModel: product,
-                
               ),
           transition: Transition.fadeIn,
           duration: const Duration(milliseconds: 300)),
@@ -82,23 +81,9 @@ class TProductCardVertical extends StatelessWidget {
                   Positioned(
                     right: 0,
                     top: 0,
-                    child: CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: () {},
-                      child: TRoundedContainer(
-                        backgroundColor: dark
-                            ? AppColors.black.withOpacity(0.9)
-                            : AppColors.white.withOpacity(0.9),
-                        padding: const EdgeInsets.all(TSizes.xs + 2),
-                        reduis: 100,
-                        child: const Center(
-                          child: Icon(
-                            Iconsax.heart,
-                            size: 22,
-                            color: AppColors.error,
-                          ),
-                        ),
-                      ),
+                    child: TFavoriteButtonWidget(
+                      dark: dark,
+                      productId: product.id,
                     ),
                   )
                 ],
