@@ -32,7 +32,7 @@ class TValidator {
     if (value == null || value.isEmpty) {
       return 'Phone number is required';
     }
-    if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+    if (!RegExp(r'^\d{11}$').hasMatch(value)) {
       return 'Please enter a valid phone number';
     }
     return null;

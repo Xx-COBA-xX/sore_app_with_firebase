@@ -1,83 +1,58 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:get/get.dart';
 
-import 'package:sore_app_with_firebase/core/common/widgets/custom/contianer_widget/rounded_container.dart';
-import 'package:sore_app_with_firebase/core/utils/constants/colors.dart';
 import 'package:sore_app_with_firebase/core/utils/constants/sizes.dart';
-import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
+import 'package:sore_app_with_firebase/feaures/personalization/controller/address/address_controller.dart';
+
+import 'user_address_card.dart';
 
 class UserAddrassScreenBody extends StatelessWidget {
   const UserAddrassScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    final controller = Get.put(AddressController());
+    return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
           children: [
-            UserAddrassCard(isSelected: true),
-            UserAddrassCard(isSelected: false),
+            Obx(() {
+              return FutureBuilder(
+                  key: Key(controller.refrechDate.value.toString()),
+                  future: controller.fetchAllAddress(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (snapshot.hasError ||
+                        snapshot.data == null ||
+                        snapshot.data!.isEmpty) {
+                      return const Center(
+                        child: Text("No Address Found"),
+                      );
+                    }
+                    final addresses = snapshot.data!;
+                    return ListView.builder(
+                      itemCount: addresses.length,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) => UserAddrassCard(
+                        address: addresses[index],
+                        onTap: () {
+                          controller.selectAddress(
+                            addresses[index],
+                          );
+                        },
+                      ),
+                    );
+                  });
+            }),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class UserAddrassCard extends StatelessWidget {
-  const UserAddrassCard({
-    super.key,
-    required this.isSelected,
-  });
-  final bool isSelected;
-  @override
-  Widget build(BuildContext context) {
-    final isDark = THelperFunctions.isDarkMode(context);
-    return TRoundedContainer(
-      padding: const EdgeInsets.all(TSizes.md),
-      margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
-      backgroundColor: isSelected ? AppColors.primary : Colors.transparent,
-      showBorder: true,
-      width: double.infinity,
-      borderColor: isSelected
-          ? Colors.transparent
-          : isDark
-              ? AppColors.darkerGrey
-              : AppColors.grey,
-      child: Stack(
-        children: [
-          Positioned(
-            right: 0,
-            child: Icon(
-              isSelected ? Iconsax.tick_circle : null,
-              color: isDark ? AppColors.white : AppColors.black,
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Haider Habeeb",
-                style: Theme.of(context).textTheme.titleLarge,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: TSizes.spaceBtwItems / 2),
-              const Text(
-                "+964 784 123 4567",
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: TSizes.spaceBtwItems / 2),
-              const Text(
-                "429952 Al-Shraa Street, Abu Al-Khasep, Basrah, IRAQ",
-                softWrap: true,
-              )
-            ],
-          )
-        ],
       ),
     );
   }

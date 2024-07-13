@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:sore_app_with_firebase/feaures/shop/models/categories/categories_model.dart';
 
@@ -13,7 +12,7 @@ class CategoriesRepository extends GetxController {
   /// [varibal]
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  ///* [get all categories]
+  /// [get all categories]
   Future<List<CategoriesModel>> getAllCategories() async {
     try {
       final snapshot = await _db.collection("Categories").get();

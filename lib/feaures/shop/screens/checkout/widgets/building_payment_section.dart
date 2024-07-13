@@ -19,6 +19,7 @@ class TBuildingPaymentSection extends StatelessWidget {
       children: [
         TSectionHeading(
           onPressed: () {},
+          textColor: isDark ? AppColors.white : AppColors.dark,
           title: "Payment Method",
           showMore: true,
           btnText: "Change",

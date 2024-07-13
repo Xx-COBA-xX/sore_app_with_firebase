@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 import 'package:sore_app_with_firebase/core/common/widgets/custom/section_heading.dart';
+import 'package:sore_app_with_firebase/core/utils/helpers/helper_func.dart';
 
+import '../../../../../core/utils/constants/colors.dart';
 import '../../../../../core/utils/constants/sizes.dart';
 import 'build_addrass_section_tiem.dart';
 
@@ -14,12 +16,14 @@ class TBuildingShippingAddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = THelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TSectionHeading(
           onPressed: () {},
           title: "Shipping Address",
+          textColor: isDark ? AppColors.white : AppColors.dark,
           showMore: true,
           btnText: "Change",
           padding: EdgeInsets.zero,

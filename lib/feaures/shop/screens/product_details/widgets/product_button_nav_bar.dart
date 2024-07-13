@@ -15,7 +15,7 @@ class ProductButtomNavBar extends StatelessWidget {
     final isDark = THelperFunctions.isDarkMode(context);
     return TRoundedContainer(
       height: 65,
-      backgroundColor: isDark ? AppColors.darkerGrey : AppColors.grey,
+      backgroundColor: isDark ? AppColors.darkerGrey : AppColors.light,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal:TSizes.defaultSpace),
         child: Row(

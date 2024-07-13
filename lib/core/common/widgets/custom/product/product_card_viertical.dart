@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -51,14 +52,18 @@ class TProductCardVertical extends StatelessWidget {
           children: [
             TRoundedContainer(
               height: 150,
+              width: 150,
               backgroundColor: dark ? AppColors.dark : AppColors.light,
               child: Stack(
                 children: [
-                  TRoundedImage(
-                    imageUrl: product.thumbnail,
-                    // imageUrl: TImages.product1,
-                    isNetworkImage: true,
-                    fit: BoxFit.contain,
+                  Align(
+                    alignment: Alignment.center,
+                    child: TRoundedImage(
+                      imageUrl: product.thumbnail,
+                      // imageUrl: TImages.product1,
+                      isNetworkImage: true,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                   if (product.salePrice > 0)
                     Positioned(

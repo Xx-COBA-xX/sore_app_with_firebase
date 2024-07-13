@@ -33,7 +33,7 @@ class ProductImageView extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     return TCurvedEdgesWidget(
       child: Container(
-        color: isDark ? AppColors.darkerGrey : AppColors.lightGrey,
+        color: isDark ? AppColors.darkerGrey : AppColors.light,
         child: Stack(
           children: [
             SizedBox(
